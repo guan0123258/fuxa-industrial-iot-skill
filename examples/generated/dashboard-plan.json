@@ -1,38 +1,33 @@
 {
   "schema": "industrial-fuxa-dashboard-plan/v1",
-  "title": "船舶01 · 主机运行总览",
+  "title": "生产线总览",
   "subtitle": "实时运行状态 / 关键参数 / 报警摘要",
-  "preset": "engine-room",
+  "preset": "production-overview",
   "size": {
     "width": 1920,
     "height": 1080
   },
-  "theme": "marine-dark",
+  "theme": "industrial-dark",
   "sourceDevice": {
-    "id": "ship01-main-engine",
-    "name": "船舶01-主机",
-    "type": "main-engine",
-    "vesselId": "ship01"
+    "id": "production-line-01",
+    "name": "ProductionLine"
   },
-  "generatedAt": "2026-09-15T01:33:35.954Z",
+  "generatedAt": "2026-09-15T01:58:58.453Z",
   "widgets": [
     {
-      "id": "widget-mainEngine.exhaustTemp",
-      "type": "thermometer",
-      "variableId": "mainEngine.exhaustTemp",
-      "title": "主机排气温度",
-      "unit": "°C",
-      "semanticType": "temperature",
-      "confidence": 1,
+      "id": "widget-line01.pressure",
+      "type": "pressure-gauge",
+      "variableId": "line01.pressure",
+      "title": "进气压力",
+      "unit": "bar",
+      "semanticType": "pressure",
+      "confidence": 0.92,
       "needsReview": false,
       "engineeringRange": {
         "min": 0,
-        "max": 150
+        "max": 16
       },
-      "thresholds": {
-        "warningHigh": 95,
-        "alarmHigh": 110
-      },
+      "thresholds": null,
       "writable": false,
       "rect": {
         "x": 40,
@@ -42,17 +37,17 @@
       }
     },
     {
-      "id": "widget-mainEngine.oilPressure",
-      "type": "pressure-gauge",
-      "variableId": "mainEngine.oilPressure",
-      "title": "润滑油压力",
-      "unit": "bar",
-      "semanticType": "pressure",
+      "id": "widget-line01.temperature",
+      "type": "thermometer",
+      "variableId": "line01.temperature",
+      "title": "反应釜温度",
+      "unit": "°C",
+      "semanticType": "temperature",
       "confidence": 0.92,
       "needsReview": false,
       "engineeringRange": {
         "min": 0,
-        "max": 10
+        "max": 120
       },
       "thresholds": null,
       "writable": false,
@@ -64,17 +59,17 @@
       }
     },
     {
-      "id": "widget-mainEngine.rpm",
-      "type": "rpm-gauge",
-      "variableId": "mainEngine.rpm",
-      "title": "主机转速",
-      "unit": "rpm",
-      "semanticType": "rpm",
-      "confidence": 1,
+      "id": "widget-line01.current",
+      "type": "gauge",
+      "variableId": "line01.current",
+      "title": "电机电流",
+      "unit": "A",
+      "semanticType": "current",
+      "confidence": 0.92,
       "needsReview": false,
       "engineeringRange": {
         "min": 0,
-        "max": 2400
+        "max": 200
       },
       "thresholds": null,
       "writable": false,
@@ -86,17 +81,17 @@
       }
     },
     {
-      "id": "widget-mainEngine.current",
-      "type": "gauge",
-      "variableId": "mainEngine.current",
-      "title": "主机电流",
-      "unit": "A",
-      "semanticType": "current",
+      "id": "widget-line01.rpm",
+      "type": "rpm-gauge",
+      "variableId": "line01.rpm",
+      "title": "风机转速",
+      "unit": "rpm",
+      "semanticType": "rpm",
       "confidence": 0.92,
       "needsReview": false,
       "engineeringRange": {
         "min": 0,
-        "max": 120
+        "max": 3000
       },
       "thresholds": null,
       "writable": false,
@@ -108,15 +103,18 @@
       }
     },
     {
-      "id": "widget-mainEngine.running",
-      "type": "status",
-      "variableId": "mainEngine.running",
-      "title": "主机运行状态",
-      "unit": "",
-      "semanticType": "status",
-      "confidence": 1,
+      "id": "widget-line01.load",
+      "type": "gauge",
+      "variableId": "line01.load",
+      "title": "设备负载率",
+      "unit": "%",
+      "semanticType": "load",
+      "confidence": 0.92,
       "needsReview": false,
-      "engineeringRange": null,
+      "engineeringRange": {
+        "min": 0,
+        "max": 100
+      },
       "thresholds": null,
       "writable": false,
       "rect": {
@@ -127,15 +125,18 @@
       }
     },
     {
-      "id": "widget-mainEngine.runningHours",
-      "type": "kpi",
-      "variableId": "mainEngine.runningHours",
-      "title": "累计运行时间",
-      "unit": "h",
-      "semanticType": "runtime",
-      "confidence": 1,
+      "id": "widget-line01.level",
+      "type": "tank",
+      "variableId": "line01.level",
+      "title": "储罐液位",
+      "unit": "%",
+      "semanticType": "level",
+      "confidence": 0.92,
       "needsReview": false,
-      "engineeringRange": null,
+      "engineeringRange": {
+        "min": 0,
+        "max": 100
+      },
       "thresholds": null,
       "writable": false,
       "rect": {
@@ -146,14 +147,14 @@
       }
     },
     {
-      "id": "widget-mainEngine.unknownMetric",
-      "type": "kpi",
-      "variableId": "mainEngine.unknownMetric",
-      "title": "参数X7",
+      "id": "widget-line01.running",
+      "type": "status",
+      "variableId": "line01.running",
+      "title": "设备运行状态",
       "unit": "",
-      "semanticType": "generic-number",
-      "confidence": 0.35,
-      "needsReview": true,
+      "semanticType": "status",
+      "confidence": 0.72,
+      "needsReview": false,
       "engineeringRange": null,
       "thresholds": null,
       "writable": false,
@@ -165,16 +166,35 @@
       }
     },
     {
+      "id": "widget-line01.standby",
+      "type": "status",
+      "variableId": "line01.standby",
+      "title": "备用泵状态",
+      "unit": "",
+      "semanticType": "status",
+      "confidence": 0.72,
+      "needsReview": false,
+      "engineeringRange": null,
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 1433.5,
+        "y": 289,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
       "id": "widget-key-trends",
       "type": "multi-trend",
       "title": "关键参数趋势",
       "variableIds": [
-        "mainEngine.exhaustTemp",
-        "mainEngine.oilPressure",
-        "mainEngine.rpm",
-        "mainEngine.current",
-        "mainEngine.runningHours",
-        "mainEngine.unknownMetric"
+        "line01.pressure",
+        "line01.temperature",
+        "line01.current",
+        "line01.rpm",
+        "line01.load",
+        "line01.level"
       ],
       "history": {
         "defaultWindow": "24h",
@@ -194,7 +214,8 @@
       "type": "equipment-matrix",
       "title": "设备 / 系统状态",
       "variableIds": [
-        "mainEngine.running"
+        "line01.running",
+        "line01.standby"
       ],
       "rect": {
         "id": "status",
@@ -219,9 +240,7 @@
     }
   ],
   "review": {
-    "lowConfidenceVariableIds": [
-      "mainEngine.unknownMetric"
-    ],
+    "lowConfidenceVariableIds": [],
     "writableVariableIds": []
   }
 }

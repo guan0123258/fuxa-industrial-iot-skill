@@ -1,7 +1,7 @@
 {
   "industrialCloud": {
     "baseUrl": "https://industrial-cloud.example.com",
-    "snapshotEndpoint": "/api/v1/devices/ship01-main-engine/telemetry/latest",
+    "snapshotEndpoint": "/api/v1/devices/production-line-01/telemetry/latest",
     "method": "GET",
     "timeoutMs": 10000,
     "headers": {
@@ -9,12 +9,12 @@
     },
     "valueRoot": "",
     "mapping": [
-      { "sourcePath": "values.exhaustTemp", "fuxaTagId": "mainEngine.exhaustTemp" },
-      { "sourcePath": "values.oilPressure", "fuxaTagId": "mainEngine.oilPressure" },
-      { "sourcePath": "values.rpm", "fuxaTagId": "mainEngine.rpm" },
-      { "sourcePath": "values.current", "fuxaTagId": "mainEngine.current" },
-      { "sourcePath": "values.running", "fuxaTagId": "mainEngine.running" },
-      { "sourcePath": "values.runningHours", "fuxaTagId": "mainEngine.runningHours" }
+      { "sourcePath": "values.pressure", "fuxaTagId": "line01.pressure" },
+      { "sourcePath": "values.temperature", "fuxaTagId": "line01.temperature" },
+      { "sourcePath": "values.torque", "fuxaTagId": "line01.torque" },
+      { "sourcePath": "values.rpm", "fuxaTagId": "line01.rpm" },
+      { "sourcePath": "values.load", "fuxaTagId": "line01.load" },
+      { "sourcePath": "values.running", "fuxaTagId": "line01.running" }
     ]
   },
   "fuxa": {

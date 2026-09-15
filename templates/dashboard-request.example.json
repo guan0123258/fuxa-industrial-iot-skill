@@ -1,14 +1,14 @@
 {
-  "title": "船舶01 · 主机运行总览",
+  "title": "生产线总览",
   "subtitle": "实时运行状态 / 关键参数 / 报警摘要",
-  "preset": "engine-room",
+  "preset": "production-overview",
   "width": 1920,
   "height": 1080,
-  "theme": "marine-dark",
+  "theme": "industrial-dark",
   "showClock": true,
   "showDataFreshness": true,
   "groups": [
-    { "id": "main", "title": "主机关键参数", "matchPrefix": "mainEngine." }
+    { "id": "primary", "title": "关键参数", "matchPrefix": "line01." }
   ],
   "history": {
     "defaultWindow": "24h",

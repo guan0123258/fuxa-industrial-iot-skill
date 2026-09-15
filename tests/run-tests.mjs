@@ -17,10 +17,10 @@ async function test(name, fn) {
 
 /** Fixture shared by the FUXA view tests: one variable per widget intent. */
 const ENGINE_MANIFEST = {
-  device: { id: 'dev-1', name: 'MainPropulsion' },
+  device: { id: 'dev-1', name: 'ProductionLine' },
   variables: [
-    { id: 'pressure', name: '润滑油压力', unit: 'bar', dataType: 'number', engineeringRange: { min: 1, max: 10 }, display: ['pressure-gauge'] },
-    { id: 'temperature', name: '主机温度', unit: '°C', dataType: 'number', engineeringRange: { min: 25, max: 50 }, display: ['thermometer', 'trend'] },
+    { id: 'pressure', name: '进气压力', unit: 'bar', dataType: 'number', engineeringRange: { min: 1, max: 10 }, display: ['pressure-gauge'] },
+    { id: 'temperature', name: '反应釜温度', unit: '°C', dataType: 'number', engineeringRange: { min: 25, max: 50 }, display: ['thermometer', 'trend'] },
     { id: 'rpm', name: '主机转速', unit: 'rpm', dataType: 'number', engineeringRange: { min: 3000, max: 4000 }, display: ['rpm-gauge', 'trend'] },
     { id: 'running', name: '主机运行开关', dataType: 'boolean', writable: true, display: ['status'] },
     { id: 'standby', name: '备用泵状态', dataType: 'boolean', display: ['status'] }
@@ -66,7 +66,7 @@ await test('dashboard plan and SVG are generated', async () => {
     {id:'rpm',name:'转速',unit:'rpm',dataType:'number',sampleValue:1800},
     {id:'run',name:'运行状态',dataType:'boolean',sampleValue:true}
   ]};
-  const {classified,plan,bindingPlan} = await makeDashboardPlan({manifest, request:{preset:'engine-room',title:'Test Dashboard'}});
+  const {classified,plan,bindingPlan} = await makeDashboardPlan({manifest, request:{preset:'production-overview',title:'Test Dashboard'}});
   assert.ok(plan.widgets.length >= 3);
   assert.equal(bindingPlan.bindings.length, 3);
   const svg=renderDashboardSvg(plan,classified);
@@ -75,8 +75,8 @@ await test('dashboard plan and SVG are generated', async () => {
 });
 
 await test('FUXA view binds every value widget to a native element', async () => {
-  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'engine-room', title: 'Test Dashboard' } });
-  const rendered = renderFuxaView({ plan, classified, context: { deviceId: 'dev-1', deviceName: 'MainPropulsion', viewId: 'v1', viewName: 'Main' } });
+  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'production-overview', title: 'Test Dashboard' } });
+  const rendered = renderFuxaView({ plan, classified, context: { deviceId: 'dev-1', deviceName: 'ProductionLine', viewId: 'v1', viewName: 'Main' } });
   const items = Object.values(rendered.view.items);
   const types = items.map((item) => item.type);
 
@@ -112,7 +112,7 @@ await test('FUXA view binds every value widget to a native element', async () =>
 });
 
 await test('writable boolean ships as a switch, read-only boolean as a value', async () => {
-  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'engine-room' } });
+  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'production-overview' } });
   const rendered = renderFuxaView({ plan, classified, context: { deviceId: 'dev-1', deviceName: 'Main', viewId: 'v1', viewName: 'Main' } });
   const items = Object.values(rendered.view.items);
   const writable = items.find((item) => item.id === 'HXT_widget-running');
@@ -126,7 +126,7 @@ await test('writable boolean ships as a switch, read-only boolean as a value', a
 });
 
 await test('validator rejects a view that would ship as a static picture', async () => {
-  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'engine-room' } });
+  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'production-overview' } });
   const rendered = renderFuxaView({ plan, classified, context: { deviceId: 'dev-1', deviceName: 'Main', viewId: 'v1', viewName: 'Main' } });
 
   // Strip every binding for one variable, the way a static-SVG-only pipeline
@@ -141,7 +141,7 @@ await test('validator rejects a view that would ship as a static picture', async
 });
 
 await test('validator catches a gauge container that FUXA could not mount', async () => {
-  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'engine-room' } });
+  const { classified, plan } = await makeDashboardPlan({ manifest: ENGINE_MANIFEST, request: { preset: 'production-overview' } });
   const rendered = renderFuxaView({ plan, classified, context: { deviceId: 'dev-1', deviceName: 'Main', viewId: 'v1', viewName: 'Main' } });
   rendered.view.svgcontent = rendered.view.svgcontent.replace('id="D-BAG_widget-pressure"', 'id="D-BAG-missing"');
   const result = validateFuxaView({ view: rendered.view, charts: rendered.charts, plan });

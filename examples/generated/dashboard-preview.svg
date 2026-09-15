@@ -1,56 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="船舶01 · 主机运行总览" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="生产线总览" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif">
   <rect width="100%" height="100%" fill="#07121d"/>
-  <text x="40" y="57" fill="#edf7ff" font-size="28" font-weight="700">船舶01 · 主机运行总览</text>
+  <text x="40" y="57" fill="#edf7ff" font-size="28" font-weight="700">生产线总览</text>
   <text x="40" y="84" fill="#758ea2" font-size="14">实时运行状态 / 关键参数 / 报警摘要</text>
   <text x="1880" y="55" fill="#51d88a" font-size="13" text-anchor="end">● 数据连接正常</text>
   <text x="1880" y="80" fill="#60798e" font-size="12" text-anchor="end">AI preview · bindings are reviewed before FUXA apply</text>
   <g><rect x="40" y="130" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="58" y="161" fill="#aebdca" font-size="16">主机排气温度</text>
-    <rect x="72" y="188" width="18" height="50" rx="9" fill="#26394c"/>
-    <rect x="72" y="213.8" width="18" height="24.2" rx="9" fill="#e4a75b"/>
-    <circle cx="81" cy="245" r="16" fill="#e4a75b"/>
-    <text x="276.645" y="211.78" fill="#edf7ff" font-size="32" font-weight="700" text-anchor="middle">72.6</text>
-    <text x="276.645" y="236.78" fill="#7f97aa" font-size="14" text-anchor="middle">°C</text>
+    <text x="58" y="161" fill="#aebdca" font-size="16">进气压力</text>
+    <path d="M 232.653 245.197 A 43.71 43.71 0 1 1 293.847 245.197" fill="none" stroke="#30465b" stroke-width="12" stroke-linecap="round"/>
+    <line x1="263.25" y1="214.6" x2="294.94961355457684" y2="227.15076487432086" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="263.25" cy="214.6" r="7" fill="#d9e6ef"/>
+    <text x="263.25" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">9.3</text>
+    <text x="263.25" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">bar</text>
 <g><rect x="504.5" y="130" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="522.5" y="161" fill="#aebdca" font-size="16">润滑油压力</text>
-    <path d="M 697.153 245.197 A 43.71 43.71 0 1 1 758.347 245.197" fill="none" stroke="#30465b" stroke-width="12" stroke-linecap="round"/>
-    <line x1="727.75" y1="214.6" x2="761.6924905087845" y2="211.39148998738122" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
-    <circle cx="727.75" cy="214.6" r="7" fill="#d9e6ef"/>
-    <text x="727.75" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">4.8</text>
-    <text x="727.75" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">bar</text>
+    <text x="522.5" y="161" fill="#aebdca" font-size="16">反应釜温度</text>
+    <rect x="536.5" y="188" width="18" height="50" rx="9" fill="#26394c"/>
+    <rect x="536.5" y="209" width="18" height="28.999999999999996" rx="9" fill="#e4a75b"/>
+    <circle cx="545.5" cy="245" r="16" fill="#e4a75b"/>
+    <text x="741.145" y="211.78" fill="#edf7ff" font-size="32" font-weight="700" text-anchor="middle">69.6</text>
+    <text x="741.145" y="236.78" fill="#7f97aa" font-size="14" text-anchor="middle">°C</text>
 <g><rect x="969" y="130" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="987" y="161" fill="#aebdca" font-size="16">主机转速</text>
+    <text x="987" y="161" fill="#aebdca" font-size="16">电机电流</text>
     <path d="M 1161.653 245.197 A 43.71 43.71 0 1 1 1222.847 245.197" fill="none" stroke="#30465b" stroke-width="12" stroke-linecap="round"/>
-    <line x1="1192.25" y1="214.6" x2="1203.4201578159405" y2="246.81202838703246" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
+    <line x1="1192.25" y1="214.6" x2="1223.949613554577" y2="227.15076487432086" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
     <circle cx="1192.25" cy="214.6" r="7" fill="#d9e6ef"/>
-    <text x="1192.25" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">1830</text>
-    <text x="1192.25" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">rpm</text>
+    <text x="1192.25" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">116.0</text>
+    <text x="1192.25" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">A</text>
 <g><rect x="1433.5" y="130" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="1451.5" y="161" fill="#aebdca" font-size="16">主机电流</text>
+    <text x="1451.5" y="161" fill="#aebdca" font-size="16">风机转速</text>
     <path d="M 1626.153 245.197 A 43.71 43.71 0 1 1 1687.347 245.197" fill="none" stroke="#30465b" stroke-width="12" stroke-linecap="round"/>
-    <line x1="1656.75" y1="214.6" x2="1689.0056450067946" y2="225.64357567256405" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
+    <line x1="1656.75" y1="214.6" x2="1688.449613554577" y2="227.15076487432086" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
     <circle cx="1656.75" cy="214.6" r="7" fill="#d9e6ef"/>
-    <text x="1656.75" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">68.4</text>
-    <text x="1656.75" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">A</text>
+    <text x="1656.75" y="246.0712" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">1740.0</text>
+    <text x="1656.75" y="269.0712" fill="#7f97aa" font-size="13" text-anchor="middle">rpm</text>
 <g><rect x="40" y="289" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="58" y="320" fill="#aebdca" font-size="16">主机运行状态</text>
-    <circle cx="263.25" cy="363.73" r="18" fill="#51d88a"/>
-    <text x="263.25" y="396.15999999999997" fill="#edf7ff" font-size="20" text-anchor="middle">运行</text>
+    <text x="58" y="320" fill="#aebdca" font-size="16">设备负载率</text>
+    <path d="M 232.653 404.197 A 43.71 43.71 0 1 1 293.847 404.197" fill="none" stroke="#30465b" stroke-width="12" stroke-linecap="round"/>
+    <line x1="263.25" y1="373.6" x2="294.94961355457684" y2="386.1507648743209" stroke="#50d2c2" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="263.25" cy="373.6" r="7" fill="#d9e6ef"/>
+    <text x="263.25" y="405.07120000000003" fill="#edf7ff" font-size="28" font-weight="700" text-anchor="middle">58.0</text>
+    <text x="263.25" y="428.07120000000003" fill="#7f97aa" font-size="13" text-anchor="middle">%</text>
 <g><rect x="504.5" y="289" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="522.5" y="320" fill="#aebdca" font-size="16">累计运行时间</text>
-    <text x="727.75" y="376.42" fill="#edf7ff" font-size="36" font-weight="700" text-anchor="middle">1342.6</text>
-    <text x="727.75" y="403.42" fill="#7f97aa" font-size="14" text-anchor="middle">h</text>
-    <polyline points="522.5,395 581.1428571428571,385.6796091403277 639.7857142857143,388.2453681944885 698.4285714285714,399.42520443294853 757.0714285714286,404.9616460883584 815.7142857142858,397.79415498198927 874.3571428571429,387.0633213615085 933,386.4540109191172" fill="none" stroke="#50d2c2" stroke-width="2" opacity="0.7"/>
+    <text x="522.5" y="320" fill="#aebdca" font-size="16">储罐液位</text>
+    <rect x="532.5" y="339" width="74" height="60" rx="7" fill="#172738" stroke="#51687c"/>
+    <rect x="537.5" y="369.2" width="64" height="28.999999999999996" rx="4" fill="#368fd3"/>
+    <text x="799.19" y="370.78" fill="#edf7ff" font-size="32" font-weight="700" text-anchor="middle">58.0</text>
+    <text x="799.19" y="395.78" fill="#7f97aa" font-size="14" text-anchor="middle">%</text>
 <g><rect x="969" y="289" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
-    <text x="987" y="320" fill="#aebdca" font-size="16">参数X7</text>
-    <text x="1192.25" y="376.42" fill="#edf7ff" font-size="36" font-weight="700" text-anchor="middle">37.2</text>
-    <text x="1192.25" y="403.42" fill="#7f97aa" font-size="14" text-anchor="middle"></text>
-    <polyline points="987,395 1045.642857142857,385.6796091403277 1104.2857142857142,388.2453681944885 1162.9285714285713,399.42520443294853 1221.5714285714287,404.9616460883584 1280.2142857142858,397.79415498198927 1338.857142857143,387.0633213615085 1397.5,386.4540109191172" fill="none" stroke="#50d2c2" stroke-width="2" opacity="0.7"/>
+    <text x="987" y="320" fill="#aebdca" font-size="16">设备运行状态</text>
+    <circle cx="1192.25" cy="363.73" r="18" fill="#51d88a"/>
+    <text x="1192.25" y="396.15999999999997" fill="#edf7ff" font-size="20" text-anchor="middle">运行</text>
+<g><rect x="1433.5" y="289" width="446.5" height="141" rx="14" fill="#101b28" stroke="#26394c"/></g>
+    <text x="1451.5" y="320" fill="#aebdca" font-size="16">备用泵状态</text>
+    <circle cx="1656.75" cy="363.73" r="18" fill="#7e8c98"/>
+    <text x="1656.75" y="396.15999999999997" fill="#edf7ff" font-size="20" text-anchor="middle">停止</text>
 <g><rect x="40" y="452" width="1210" height="408" rx="14" fill="#101b28" stroke="#26394c"/><text x="60" y="483" fill="#aebdca" font-size="16">关键参数趋势</text></g>
     <line x1="95" y1="510" x2="1223" y2="510" stroke="#26394c" stroke-width="1"/><line x1="95" y1="589" x2="1223" y2="589" stroke="#26394c" stroke-width="1"/><line x1="95" y1="668" x2="1223" y2="668" stroke="#26394c" stroke-width="1"/><line x1="95" y1="747" x2="1223" y2="747" stroke="#26394c" stroke-width="1"/><line x1="95" y1="826" x2="1223" y2="826" stroke="#26394c" stroke-width="1"/>
     <line x1="95" y1="510" x2="95" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="283" y1="510" x2="283" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="471" y1="510" x2="471" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="659" y1="510" x2="659" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="847" y1="510" x2="847" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="1035" y1="510" x2="1035" y2="826" stroke="#1b2c3d" stroke-width="1"/><line x1="1223" y1="510" x2="1223" y2="826" stroke="#1b2c3d" stroke-width="1"/>
     <polyline points="95.0,661.7 161.4,692.4 227.7,713.4 294.1,718.0 360.4,704.8 426.8,678.0 493.1,646.0 559.5,619.0 625.8,605.5 692.2,609.7 758.5,630.4 824.9,660.9 891.2,691.7 957.6,713.0 1023.9,718.1 1090.3,705.3 1156.6,678.7 1223.0,646.8" fill="none" stroke="#50d2c2" stroke-width="2.5"/><polyline points="95.0,733.9 161.4,733.4 227.7,715.8 294.1,686.5 360.4,654.9 426.8,630.9 493.1,622.2 559.5,631.4 625.8,655.7 692.2,687.4 758.5,716.4 824.9,733.7 891.2,733.6 957.6,716.3 1023.9,687.3 1090.3,655.6 1156.6,631.3 1223.0,622.2" fill="none" stroke="#5e9fe6" stroke-width="2.5"/><polyline points="95.0,725.8 161.4,694.8 227.7,664.4 294.1,644.1 360.4,640.4 426.8,654.3 493.1,681.6 559.5,713.6 625.8,740.2 692.2,752.9 758.5,747.8 824.9,726.4 891.2,695.6 957.6,665.0 1023.9,644.4 1090.3,640.2 1156.6,653.8 1223.0,680.9" fill="none" stroke="#e4a75b" stroke-width="2.5"/><polyline points="95.0,674.7 161.4,658.6 227.7,660.0 294.1,678.4 360.4,708.0 426.8,739.4 493.1,762.8 559.5,770.7 625.8,760.6 692.2,735.7 758.5,703.9 824.9,675.2 891.2,658.8 957.6,659.7 1023.9,677.8 1090.3,707.2 1156.6,738.7 1223.0,762.4" fill="none" stroke="#c782e8" stroke-width="2.5"/>
     <text x="95" y="840" fill="#60798e" font-size="12">-24h</text><text x="1223" y="840" fill="#60798e" font-size="12" text-anchor="end">Now</text>
-<g><rect x="1272" y="452" width="608" height="408" rx="14" fill="#101b28" stroke="#26394c"/><text x="1292" y="483" fill="#aebdca" font-size="16">设备 / 系统状态</text></g><line x1="1290" y1="551" x2="1862" y2="551" stroke="#1f3142"/><circle cx="1306" cy="527" r="7" fill="#51d88a"/><text x="1324" y="532" fill="#c7d5df" font-size="14">主机运行状态</text><text x="1856" y="532" text-anchor="end" fill="#8fa4b5" font-size="13">运行 </text>
+<g><rect x="1272" y="452" width="608" height="408" rx="14" fill="#101b28" stroke="#26394c"/><text x="1292" y="483" fill="#aebdca" font-size="16">设备 / 系统状态</text></g><line x1="1290" y1="551" x2="1862" y2="551" stroke="#1f3142"/><circle cx="1306" cy="527" r="7" fill="#51d88a"/><text x="1324" y="532" fill="#c7d5df" font-size="14">设备运行状态</text><text x="1856" y="532" text-anchor="end" fill="#8fa4b5" font-size="13">运行 </text><line x1="1290" y1="597" x2="1862" y2="597" stroke="#1f3142"/><circle cx="1306" cy="573" r="7" fill="#7e8c98"/><text x="1324" y="578" fill="#c7d5df" font-size="14">备用泵状态</text><text x="1856" y="578" text-anchor="end" fill="#8fa4b5" font-size="13">停止 </text>
 <g><rect x="40" y="882" width="1840" height="158" rx="14" fill="#101b28" stroke="#26394c"/><text x="60" y="913" fill="#aebdca" font-size="16">报警与数据质量</text></g><circle cx="68" cy="944" r="5" fill="#5e9fe6"/><text x="83" y="948" fill="#c7d5df" font-size="13">数据更新时间正常</text><text x="1860" y="948" text-anchor="end" fill="#6f879a" font-size="12">刚刚</text><circle cx="68" cy="980" r="5" fill="#e4a75b"/><text x="83" y="984" fill="#c7d5df" font-size="13">示例：低置信度变量需确认语义</text><text x="1860" y="984" text-anchor="end" fill="#6f879a" font-size="12">--</text><circle cx="68" cy="1016" r="5" fill="#51d88a"/><text x="83" y="1020" fill="#c7d5df" font-size="13">当前无活动故障</text><text x="1860" y="1020" text-anchor="end" fill="#6f879a" font-size="12">--</text>
 </svg>

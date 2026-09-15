@@ -2,8 +2,8 @@
   "schema": "industrial-fuxa-project-patch/v1",
   "cmd": "set-view",
   "data": {
-    "id": "engine-room-overview",
-    "name": "机舱总览",
+    "id": "production-overview",
+    "name": "生产线总览",
     "profile": {
       "width": 1920,
       "height": 1080,
@@ -14,56 +14,26 @@
       "viewRenderDelay": 0
     },
     "items": {
-      "GXP_widget-mainEngine.exhaustTemp": {
-        "id": "GXP_widget-mainEngine.exhaustTemp",
-        "type": "svg-ext-gauge_progress",
-        "name": "主机排气温度",
-        "property": {
-          "events": [],
-          "actions": [],
-          "variable": "mainEngine.exhaustTemp",
-          "variableId": "mainEngine.exhaustTemp",
-          "variableSrc": "船舶01-主机",
-          "alarmId": "",
-          "alarmSrc": "",
-          "alarm": "",
-          "alarmColor": "",
-          "ranges": [
-            {
-              "type": "minmax",
-              "min": 0,
-              "max": 150,
-              "style": [
-                false,
-                true
-              ],
-              "color": "#4aa8ff",
-              "stroke": ""
-            }
-          ]
-        },
-        "label": "HtmlProgress"
-      },
-      "BAG_widget-mainEngine.oilPressure": {
-        "id": "BAG_widget-mainEngine.oilPressure",
+      "BAG_widget-line01.pressure": {
+        "id": "BAG_widget-line01.pressure",
         "type": "svg-ext-html_bag",
-        "name": "润滑油压力",
+        "name": "进气压力",
         "property": {
           "events": [],
           "actions": [],
-          "variable": "mainEngine.oilPressure",
-          "variableId": "mainEngine.oilPressure",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.pressure",
+          "variableId": "line01.pressure",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
           "alarmColor": "",
           "options": {
             "minValue": 0,
-            "maxValue": 10,
+            "maxValue": 16,
             "animationSpeed": 32,
-            "colorStart": "#36d6c0",
-            "colorStop": "#36d6c0",
+            "colorStart": "#4aa8ff",
+            "colorStop": "#4aa8ff",
             "gradientType": "",
             "strokeColor": "#213d52",
             "pointer": {
@@ -103,15 +73,15 @@
         },
         "label": "HtmlBag"
       },
-      "VAL_widget-mainEngine.oilPressure": {
-        "id": "VAL_widget-mainEngine.oilPressure",
+      "VAL_widget-line01.pressure": {
+        "id": "VAL_widget-line01.pressure",
         "type": "svg-ext-value",
-        "name": "润滑油压力",
+        "name": "进气压力",
         "property": {
           "events": [],
-          "variable": "mainEngine.oilPressure",
-          "variableId": "mainEngine.oilPressure",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.pressure",
+          "variableId": "line01.pressure",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
@@ -120,30 +90,60 @@
             {
               "type": "unit",
               "min": 0,
-              "max": 10,
+              "max": 16,
               "text": " bar"
             }
           ]
         },
         "label": "Value"
       },
-      "BAG_widget-mainEngine.rpm": {
-        "id": "BAG_widget-mainEngine.rpm",
-        "type": "svg-ext-html_bag",
-        "name": "主机转速",
+      "GXP_widget-line01.temperature": {
+        "id": "GXP_widget-line01.temperature",
+        "type": "svg-ext-gauge_progress",
+        "name": "反应釜温度",
         "property": {
           "events": [],
           "actions": [],
-          "variable": "mainEngine.rpm",
-          "variableId": "mainEngine.rpm",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.temperature",
+          "variableId": "line01.temperature",
+          "variableSrc": "ProductionLine",
+          "alarmId": "",
+          "alarmSrc": "",
+          "alarm": "",
+          "alarmColor": "",
+          "ranges": [
+            {
+              "type": "minmax",
+              "min": 0,
+              "max": 120,
+              "style": [
+                false,
+                true
+              ],
+              "color": "#36d6c0",
+              "stroke": ""
+            }
+          ]
+        },
+        "label": "HtmlProgress"
+      },
+      "BAG_widget-line01.current": {
+        "id": "BAG_widget-line01.current",
+        "type": "svg-ext-html_bag",
+        "name": "电机电流",
+        "property": {
+          "events": [],
+          "actions": [],
+          "variable": "line01.current",
+          "variableId": "line01.current",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
           "alarmColor": "",
           "options": {
             "minValue": 0,
-            "maxValue": 2400,
+            "maxValue": 200,
             "animationSpeed": 32,
             "colorStart": "#9a86ff",
             "colorStop": "#9a86ff",
@@ -186,15 +186,15 @@
         },
         "label": "HtmlBag"
       },
-      "VAL_widget-mainEngine.rpm": {
-        "id": "VAL_widget-mainEngine.rpm",
+      "VAL_widget-line01.current": {
+        "id": "VAL_widget-line01.current",
         "type": "svg-ext-value",
-        "name": "主机转速",
+        "name": "电机电流",
         "property": {
           "events": [],
-          "variable": "mainEngine.rpm",
-          "variableId": "mainEngine.rpm",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.current",
+          "variableId": "line01.current",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
@@ -203,30 +203,30 @@
             {
               "type": "unit",
               "min": 0,
-              "max": 2400,
-              "text": " rpm"
+              "max": 200,
+              "text": " A"
             }
           ]
         },
         "label": "Value"
       },
-      "BAG_widget-mainEngine.current": {
-        "id": "BAG_widget-mainEngine.current",
+      "BAG_widget-line01.rpm": {
+        "id": "BAG_widget-line01.rpm",
         "type": "svg-ext-html_bag",
-        "name": "主机电流",
+        "name": "风机转速",
         "property": {
           "events": [],
           "actions": [],
-          "variable": "mainEngine.current",
-          "variableId": "mainEngine.current",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.rpm",
+          "variableId": "line01.rpm",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
           "alarmColor": "",
           "options": {
             "minValue": 0,
-            "maxValue": 120,
+            "maxValue": 3000,
             "animationSpeed": 32,
             "colorStart": "#ffb34d",
             "colorStop": "#ffb34d",
@@ -269,15 +269,15 @@
         },
         "label": "HtmlBag"
       },
-      "VAL_widget-mainEngine.current": {
-        "id": "VAL_widget-mainEngine.current",
+      "VAL_widget-line01.rpm": {
+        "id": "VAL_widget-line01.rpm",
         "type": "svg-ext-value",
-        "name": "主机电流",
+        "name": "风机转速",
         "property": {
           "events": [],
-          "variable": "mainEngine.current",
-          "variableId": "mainEngine.current",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.rpm",
+          "variableId": "line01.rpm",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
@@ -286,22 +286,135 @@
             {
               "type": "unit",
               "min": 0,
-              "max": 120,
-              "text": " A"
+              "max": 3000,
+              "text": " rpm"
             }
           ]
         },
         "label": "Value"
       },
-      "VAL_widget-mainEngine.running": {
-        "id": "VAL_widget-mainEngine.running",
-        "type": "svg-ext-value",
-        "name": "主机运行状态",
+      "BAG_widget-line01.load": {
+        "id": "BAG_widget-line01.load",
+        "type": "svg-ext-html_bag",
+        "name": "设备负载率",
         "property": {
           "events": [],
-          "variable": "mainEngine.running",
-          "variableId": "mainEngine.running",
-          "variableSrc": "船舶01-主机",
+          "actions": [],
+          "variable": "line01.load",
+          "variableId": "line01.load",
+          "variableSrc": "ProductionLine",
+          "alarmId": "",
+          "alarmSrc": "",
+          "alarm": "",
+          "alarmColor": "",
+          "options": {
+            "minValue": 0,
+            "maxValue": 100,
+            "animationSpeed": 32,
+            "colorStart": "#ff7285",
+            "colorStop": "#ff7285",
+            "gradientType": "",
+            "strokeColor": "#213d52",
+            "pointer": {
+              "length": 0.62,
+              "strokeWidth": 0.045,
+              "iconScale": 1,
+              "color": "#eaf4fb"
+            },
+            "angle": 0,
+            "lineWidth": 0.16,
+            "radiusScale": 1,
+            "fontSize": 0,
+            "fontFamily": "PingFang SC",
+            "textFilePosition": 62,
+            "limitMax": false,
+            "limitMin": false,
+            "highDpiSupport": true,
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "shadowColor": "#d5d5d5",
+            "fractionDigits": 0,
+            "ticksEnabled": false,
+            "renderTicks": {
+              "divisions": 0,
+              "divWidth": 0,
+              "divLength": 0,
+              "divColor": "#333333",
+              "subDivisions": 0,
+              "subLength": 0,
+              "subWidth": 0,
+              "subColor": "#666666"
+            },
+            "staticLabelsText": "",
+            "staticFontSize": 0,
+            "staticFontColor": "#000000",
+            "type": 0
+          }
+        },
+        "label": "HtmlBag"
+      },
+      "VAL_widget-line01.load": {
+        "id": "VAL_widget-line01.load",
+        "type": "svg-ext-value",
+        "name": "设备负载率",
+        "property": {
+          "events": [],
+          "variable": "line01.load",
+          "variableId": "line01.load",
+          "variableSrc": "ProductionLine",
+          "alarmId": "",
+          "alarmSrc": "",
+          "alarm": "",
+          "alarmColor": "",
+          "ranges": [
+            {
+              "type": "unit",
+              "min": 0,
+              "max": 100,
+              "text": " %"
+            }
+          ]
+        },
+        "label": "Value"
+      },
+      "GXP_widget-line01.level": {
+        "id": "GXP_widget-line01.level",
+        "type": "svg-ext-gauge_progress",
+        "name": "储罐液位",
+        "property": {
+          "events": [],
+          "actions": [],
+          "variable": "line01.level",
+          "variableId": "line01.level",
+          "variableSrc": "ProductionLine",
+          "alarmId": "",
+          "alarmSrc": "",
+          "alarm": "",
+          "alarmColor": "",
+          "ranges": [
+            {
+              "type": "minmax",
+              "min": 0,
+              "max": 100,
+              "style": [
+                false,
+                true
+              ],
+              "color": "#50d890",
+              "stroke": ""
+            }
+          ]
+        },
+        "label": "HtmlProgress"
+      },
+      "VAL_widget-line01.running": {
+        "id": "VAL_widget-line01.running",
+        "type": "svg-ext-value",
+        "name": "设备运行状态",
+        "property": {
+          "events": [],
+          "variable": "line01.running",
+          "variableId": "line01.running",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
@@ -327,52 +440,34 @@
         },
         "label": "Value"
       },
-      "VAL_widget-mainEngine.runningHours": {
-        "id": "VAL_widget-mainEngine.runningHours",
+      "VAL_widget-line01.standby": {
+        "id": "VAL_widget-line01.standby",
         "type": "svg-ext-value",
-        "name": "累计运行时间",
+        "name": "备用泵状态",
         "property": {
           "events": [],
-          "variable": "mainEngine.runningHours",
-          "variableId": "mainEngine.runningHours",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.standby",
+          "variableId": "line01.standby",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
           "alarmColor": "",
           "ranges": [
             {
-              "type": "unit",
+              "type": "step",
               "min": 0,
-              "max": 100,
-              "text": " h",
-              "color": "#50d890",
+              "max": 0,
+              "text": "停止",
+              "color": "#7e8c98",
               "stroke": ""
-            }
-          ]
-        },
-        "label": "Value"
-      },
-      "VAL_widget-mainEngine.unknownMetric": {
-        "id": "VAL_widget-mainEngine.unknownMetric",
-        "type": "svg-ext-value",
-        "name": "参数X7",
-        "property": {
-          "events": [],
-          "variable": "mainEngine.unknownMetric",
-          "variableId": "mainEngine.unknownMetric",
-          "variableSrc": "船舶01-主机",
-          "alarmId": "",
-          "alarmSrc": "",
-          "alarm": "",
-          "alarmColor": "",
-          "ranges": [
+            },
             {
-              "type": "unit",
-              "min": 0,
-              "max": 100,
-              "text": "",
-              "color": "#5e9fe6",
+              "type": "step",
+              "min": 1,
+              "max": 1,
+              "text": "运行",
+              "color": "#51d88a",
               "stroke": ""
             }
           ]
@@ -384,7 +479,7 @@
         "type": "svg-ext-html_chart",
         "name": "关键参数趋势",
         "property": {
-          "id": "chart-engine-room-overview-widget-key-trends",
+          "id": "chart-production-overview-widget-key-trends",
           "type": "realtime1",
           "options": {
             "realtime": 120,
@@ -407,15 +502,49 @@
         },
         "label": "HtmlChart"
       },
-      "VAL_widget-system-status-mainEngine.running": {
-        "id": "VAL_widget-system-status-mainEngine.running",
+      "VAL_widget-system-status-line01.running": {
+        "id": "VAL_widget-system-status-line01.running",
         "type": "svg-ext-value",
-        "name": "主机运行状态",
+        "name": "设备运行状态",
         "property": {
           "events": [],
-          "variable": "mainEngine.running",
-          "variableId": "mainEngine.running",
-          "variableSrc": "船舶01-主机",
+          "variable": "line01.running",
+          "variableId": "line01.running",
+          "variableSrc": "ProductionLine",
+          "alarmId": "",
+          "alarmSrc": "",
+          "alarm": "",
+          "alarmColor": "",
+          "ranges": [
+            {
+              "type": "step",
+              "min": 0,
+              "max": 0,
+              "text": "停止",
+              "color": "#7e8c98",
+              "stroke": ""
+            },
+            {
+              "type": "step",
+              "min": 1,
+              "max": 1,
+              "text": "运行",
+              "color": "#51d88a",
+              "stroke": ""
+            }
+          ]
+        },
+        "label": "Value"
+      },
+      "VAL_widget-system-status-line01.standby": {
+        "id": "VAL_widget-system-status-line01.standby",
+        "type": "svg-ext-value",
+        "name": "备用泵状态",
+        "property": {
+          "events": [],
+          "variable": "line01.standby",
+          "variableId": "line01.standby",
+          "variableSrc": "ProductionLine",
           "alarmId": "",
           "alarmSrc": "",
           "alarm": "",
@@ -443,7 +572,7 @@
       }
     },
     "variables": {},
-    "svgcontent": "<svg width=\"1920\" height=\"1080\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:html=\"http://www.w3.org/1999/xhtml\"><defs><linearGradient id=\"pageBg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1080\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#07121d\"/><stop offset=\"1\" stop-color=\"#050c14\"/></linearGradient></defs><g><title>Layer 1</title><rect width=\"1920\" height=\"1080\" fill=\"url(#pageBg)\"/><text x=\"40\" y=\"52\" fill=\"#edf7ff\" font-size=\"27\" font-weight=\"650\" font-family=\"PingFang SC\">船舶01 · 主机运行总览</text><text x=\"40\" y=\"78\" fill=\"#7f97aa\" font-size=\"14\" font-family=\"PingFang SC\">实时运行状态 / 关键参数 / 报警摘要</text><g id=\"svg_card_widget-mainEngine.exhaustTemp\"><rect id=\"svg_panel_widget-mainEngine.exhaustTemp\" x=\"40\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">主机排气温度</text><g id=\"GXP_widget-mainEngine.exhaustTemp\" type=\"svg-ext-gauge_progress\"><rect id=\"A-GXP_widget-mainEngine.exhaustTemp\" x=\"68\" y=\"176\" width=\"40\" height=\"67\" rx=\"10\" fill=\"#172738\" stroke=\"#51687c\"/><rect id=\"B-GXP_widget-mainEngine.exhaustTemp\" x=\"68\" y=\"243\" width=\"40\" height=\"0\" rx=\"10\" fill=\"#4aa8ff\"/><foreignObject id=\"H-GXP_widget-mainEngine.exhaustTemp\" x=\"68\" y=\"176\" width=\"40\" height=\"67\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-GXP_widget-mainEngine.exhaustTemp\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><text id=\"V-GXP_widget-mainEngine.exhaustTemp\" x=\"335\" y=\"212\" fill=\"#f5f9fc\" font-size=\"30\" font-weight=\"650\" font-family=\"PingFang SC\" text-anchor=\"middle\">--</text><text x=\"335\" y=\"236\" fill=\"#4aa8ff\" font-size=\"13\" font-family=\"PingFang SC\" text-anchor=\"middle\">°C</text></g><g id=\"svg_card_widget-mainEngine.oilPressure\"><rect id=\"svg_panel_widget-mainEngine.oilPressure\" x=\"504.5\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"522.5\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">润滑油压力</text><g id=\"BAG_widget-mainEngine.oilPressure\" type=\"svg-ext-html_bag\" data-name=\"润滑油压力\"><rect id=\"svg_gaugebox_widget-mainEngine.oilPressure\" x=\"518\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-mainEngine.oilPressure\" x=\"518\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-mainEngine.oilPressure\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-mainEngine.oilPressure\" data-name=\"润滑油压力\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.oilPressure\" x=\"728\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"728\" y=\"308\" fill=\"#36d6c0\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">bar</text></g><g id=\"svg_card_widget-mainEngine.rpm\"><rect id=\"svg_panel_widget-mainEngine.rpm\" x=\"969\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"987\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">主机转速</text><g id=\"BAG_widget-mainEngine.rpm\" type=\"svg-ext-html_bag\" data-name=\"主机转速\"><rect id=\"svg_gaugebox_widget-mainEngine.rpm\" x=\"983\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-mainEngine.rpm\" x=\"983\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-mainEngine.rpm\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-mainEngine.rpm\" data-name=\"主机转速\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.rpm\" x=\"1192\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"1192\" y=\"308\" fill=\"#9a86ff\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">rpm</text></g><g id=\"svg_card_widget-mainEngine.current\"><rect id=\"svg_panel_widget-mainEngine.current\" x=\"1433.5\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"1451.5\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">主机电流</text><g id=\"BAG_widget-mainEngine.current\" type=\"svg-ext-html_bag\" data-name=\"主机电流\"><rect id=\"svg_gaugebox_widget-mainEngine.current\" x=\"1447\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-mainEngine.current\" x=\"1447\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-mainEngine.current\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-mainEngine.current\" data-name=\"主机电流\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.current\" x=\"1657\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"1657\" y=\"308\" fill=\"#ffb34d\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">A</text></g><g id=\"svg_card_widget-mainEngine.running\"><rect id=\"svg_panel_widget-mainEngine.running\" x=\"40\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">主机运行状态</text><g id=\"VAL_widget-mainEngine.running\" data-name=\"主机运行状态\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.running\" x=\"263\" y=\"385\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"26\" font-weight=\"650\" text-anchor=\"middle\">--</text></g></g><g id=\"svg_card_widget-mainEngine.runningHours\"><rect id=\"svg_panel_widget-mainEngine.runningHours\" x=\"504.5\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"522.5\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">累计运行时间</text><g id=\"VAL_widget-mainEngine.runningHours\" data-name=\"累计运行时间\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.runningHours\" x=\"728\" y=\"376\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"36\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"728\" y=\"400\" fill=\"#7f97aa\" font-size=\"13\" font-family=\"PingFang SC\" text-anchor=\"middle\">h</text></g><g id=\"svg_card_widget-mainEngine.unknownMetric\"><rect id=\"svg_panel_widget-mainEngine.unknownMetric\" x=\"969\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"987\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">参数X7</text><g id=\"VAL_widget-mainEngine.unknownMetric\" data-name=\"参数X7\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-mainEngine.unknownMetric\" x=\"1192\" y=\"376\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"36\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"1192\" y=\"400\" fill=\"#7f97aa\" font-size=\"13\" font-family=\"PingFang SC\" text-anchor=\"middle\"></text></g><g id=\"svg_card_widget-key-trends\"><rect id=\"svg_panel_widget-key-trends\" x=\"40\" y=\"452\" width=\"1210\" height=\"408\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"480\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">关键参数趋势</text><g id=\"HXC_widget-key-trends\" type=\"svg-ext-html_chart\" data-name=\"关键参数趋势\"><rect id=\"svg_chartbox_widget-key-trends\" x=\"56\" y=\"494\" width=\"1178\" height=\"350\" rx=\"12\" fill=\"#0a1b2b\"/><foreignObject id=\"H-HXC_widget-key-trends\" x=\"56\" y=\"494\" width=\"1178\" height=\"350\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-HXC_widget-key-trends\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g></g><g id=\"svg_card_widget-system-status\"><rect id=\"svg_panel_widget-system-status\" x=\"1272\" y=\"452\" width=\"608\" height=\"408\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"1290\" y=\"480\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">设备 / 系统状态</text><line x1=\"1288\" y1=\"538\" x2=\"1864\" y2=\"538\" stroke=\"#1f3142\"/><text x=\"1292\" y=\"516\" fill=\"#c7d5df\" font-size=\"13\" font-family=\"PingFang SC\">主机运行状态</text><g id=\"VAL_widget-system-status-mainEngine.running\" data-name=\"主机运行状态\" type=\"svg-ext-value\" text-anchor=\"end\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-system-status-mainEngine.running\" x=\"1864\" y=\"516\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"14\" font-weight=\"650\" text-anchor=\"end\">--</text></g></g><g id=\"svg_card_widget-alarms\"><rect id=\"svg_panel_widget-alarms\" x=\"40\" y=\"882\" width=\"1840\" height=\"158\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"910\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">报警与数据质量</text><circle cx=\"66\" cy=\"928\" r=\"5\" fill=\"#213d52\"/><text x=\"82\" y=\"932\" fill=\"#c7d5df\" font-size=\"13\" font-family=\"PingFang SC\">需要接入真实数据源后才能显示实时内容</text></g></g></svg>",
+    "svgcontent": "<svg width=\"1920\" height=\"1080\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:html=\"http://www.w3.org/1999/xhtml\"><defs><linearGradient id=\"pageBg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1080\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#07121d\"/><stop offset=\"1\" stop-color=\"#050c14\"/></linearGradient></defs><g><title>Layer 1</title><rect width=\"1920\" height=\"1080\" fill=\"url(#pageBg)\"/><text x=\"40\" y=\"52\" fill=\"#edf7ff\" font-size=\"27\" font-weight=\"650\" font-family=\"PingFang SC\">生产线总览</text><text x=\"40\" y=\"78\" fill=\"#7f97aa\" font-size=\"14\" font-family=\"PingFang SC\">实时运行状态 / 关键参数 / 报警摘要</text><g id=\"svg_card_widget-line01.pressure\"><rect id=\"svg_panel_widget-line01.pressure\" x=\"40\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">进气压力</text><g id=\"BAG_widget-line01.pressure\" type=\"svg-ext-html_bag\" data-name=\"进气压力\"><rect id=\"svg_gaugebox_widget-line01.pressure\" x=\"54\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-line01.pressure\" x=\"54\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-line01.pressure\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-line01.pressure\" data-name=\"进气压力\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.pressure\" x=\"263\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"263\" y=\"308\" fill=\"#4aa8ff\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">bar</text></g><g id=\"svg_card_widget-line01.temperature\"><rect id=\"svg_panel_widget-line01.temperature\" x=\"504.5\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"522.5\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">反应釜温度</text><g id=\"GXP_widget-line01.temperature\" type=\"svg-ext-gauge_progress\"><rect id=\"A-GXP_widget-line01.temperature\" x=\"533\" y=\"176\" width=\"40\" height=\"67\" rx=\"10\" fill=\"#172738\" stroke=\"#51687c\"/><rect id=\"B-GXP_widget-line01.temperature\" x=\"533\" y=\"243\" width=\"40\" height=\"0\" rx=\"10\" fill=\"#36d6c0\"/><foreignObject id=\"H-GXP_widget-line01.temperature\" x=\"533\" y=\"176\" width=\"40\" height=\"67\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-GXP_widget-line01.temperature\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><text id=\"V-GXP_widget-line01.temperature\" x=\"799\" y=\"212\" fill=\"#f5f9fc\" font-size=\"30\" font-weight=\"650\" font-family=\"PingFang SC\" text-anchor=\"middle\">--</text><text x=\"799\" y=\"236\" fill=\"#36d6c0\" font-size=\"13\" font-family=\"PingFang SC\" text-anchor=\"middle\">°C</text></g><g id=\"svg_card_widget-line01.current\"><rect id=\"svg_panel_widget-line01.current\" x=\"969\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"987\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">电机电流</text><g id=\"BAG_widget-line01.current\" type=\"svg-ext-html_bag\" data-name=\"电机电流\"><rect id=\"svg_gaugebox_widget-line01.current\" x=\"983\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-line01.current\" x=\"983\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-line01.current\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-line01.current\" data-name=\"电机电流\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.current\" x=\"1192\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"1192\" y=\"308\" fill=\"#9a86ff\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">A</text></g><g id=\"svg_card_widget-line01.rpm\"><rect id=\"svg_panel_widget-line01.rpm\" x=\"1433.5\" y=\"130\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"1451.5\" y=\"158\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">风机转速</text><g id=\"BAG_widget-line01.rpm\" type=\"svg-ext-html_bag\" data-name=\"风机转速\"><rect id=\"svg_gaugebox_widget-line01.rpm\" x=\"1447\" y=\"160\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-line01.rpm\" x=\"1447\" y=\"160\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-line01.rpm\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-line01.rpm\" data-name=\"风机转速\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.rpm\" x=\"1657\" y=\"290\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"1657\" y=\"308\" fill=\"#ffb34d\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">rpm</text></g><g id=\"svg_card_widget-line01.load\"><rect id=\"svg_panel_widget-line01.load\" x=\"40\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">设备负载率</text><g id=\"BAG_widget-line01.load\" type=\"svg-ext-html_bag\" data-name=\"设备负载率\"><rect id=\"svg_gaugebox_widget-line01.load\" x=\"54\" y=\"319\" width=\"419\" height=\"96\" rx=\"12\" fill=\"none\"/><foreignObject id=\"H-BAG_widget-line01.load\" x=\"54\" y=\"319\" width=\"419\" height=\"96\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-BAG_widget-line01.load\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><g id=\"VAL_widget-line01.load\" data-name=\"设备负载率\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.load\" x=\"263\" y=\"449\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"30\" font-weight=\"650\" text-anchor=\"middle\">--</text></g><text x=\"263\" y=\"467\" fill=\"#ff7285\" font-size=\"12\" font-family=\"PingFang SC\" text-anchor=\"middle\">%</text></g><g id=\"svg_card_widget-line01.level\"><rect id=\"svg_panel_widget-line01.level\" x=\"504.5\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"522.5\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">储罐液位</text><g id=\"GXP_widget-line01.level\" type=\"svg-ext-gauge_progress\"><rect id=\"A-GXP_widget-line01.level\" x=\"533\" y=\"335\" width=\"40\" height=\"67\" rx=\"10\" fill=\"#172738\" stroke=\"#51687c\"/><rect id=\"B-GXP_widget-line01.level\" x=\"533\" y=\"402\" width=\"40\" height=\"0\" rx=\"10\" fill=\"#50d890\"/><foreignObject id=\"H-GXP_widget-line01.level\" x=\"533\" y=\"335\" width=\"40\" height=\"67\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-GXP_widget-line01.level\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g><text id=\"V-GXP_widget-line01.level\" x=\"799\" y=\"371\" fill=\"#f5f9fc\" font-size=\"30\" font-weight=\"650\" font-family=\"PingFang SC\" text-anchor=\"middle\">--</text><text x=\"799\" y=\"395\" fill=\"#50d890\" font-size=\"13\" font-family=\"PingFang SC\" text-anchor=\"middle\">%</text></g><g id=\"svg_card_widget-line01.running\"><rect id=\"svg_panel_widget-line01.running\" x=\"969\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"987\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">设备运行状态</text><g id=\"VAL_widget-line01.running\" data-name=\"设备运行状态\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.running\" x=\"1192\" y=\"385\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"26\" font-weight=\"650\" text-anchor=\"middle\">--</text></g></g><g id=\"svg_card_widget-line01.standby\"><rect id=\"svg_panel_widget-line01.standby\" x=\"1433.5\" y=\"289\" width=\"446.5\" height=\"141\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"1451.5\" y=\"317\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">备用泵状态</text><g id=\"VAL_widget-line01.standby\" data-name=\"备用泵状态\" type=\"svg-ext-value\" text-anchor=\"middle\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-line01.standby\" x=\"1657\" y=\"385\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"26\" font-weight=\"650\" text-anchor=\"middle\">--</text></g></g><g id=\"svg_card_widget-key-trends\"><rect id=\"svg_panel_widget-key-trends\" x=\"40\" y=\"452\" width=\"1210\" height=\"408\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"480\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">关键参数趋势</text><g id=\"HXC_widget-key-trends\" type=\"svg-ext-html_chart\" data-name=\"关键参数趋势\"><rect id=\"svg_chartbox_widget-key-trends\" x=\"56\" y=\"494\" width=\"1178\" height=\"350\" rx=\"12\" fill=\"#0a1b2b\"/><foreignObject id=\"H-HXC_widget-key-trends\" x=\"56\" y=\"494\" width=\"1178\" height=\"350\"><DIV xmlns=\"http://www.w3.org/1999/xhtml\" id=\"D-HXC_widget-key-trends\" style=\"width:100%;height:100%;\"></DIV></foreignObject></g></g><g id=\"svg_card_widget-system-status\"><rect id=\"svg_panel_widget-system-status\" x=\"1272\" y=\"452\" width=\"608\" height=\"408\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"1290\" y=\"480\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">设备 / 系统状态</text><line x1=\"1288\" y1=\"538\" x2=\"1864\" y2=\"538\" stroke=\"#1f3142\"/><text x=\"1292\" y=\"516\" fill=\"#c7d5df\" font-size=\"13\" font-family=\"PingFang SC\">设备运行状态</text><g id=\"VAL_widget-system-status-line01.running\" data-name=\"设备运行状态\" type=\"svg-ext-value\" text-anchor=\"end\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-system-status-line01.running\" x=\"1864\" y=\"516\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"14\" font-weight=\"650\" text-anchor=\"end\">--</text></g><line x1=\"1288\" y1=\"584\" x2=\"1864\" y2=\"584\" stroke=\"#1f3142\"/><text x=\"1292\" y=\"562\" fill=\"#c7d5df\" font-size=\"13\" font-family=\"PingFang SC\">备用泵状态</text><g id=\"VAL_widget-system-status-line01.standby\" data-name=\"备用泵状态\" type=\"svg-ext-value\" text-anchor=\"end\" font-family=\"PingFang SC\" stroke-width=\"0\" stroke=\"#f5f9fc\" fill=\"#f5f9fc\"><text id=\"TXT_widget-system-status-line01.standby\" x=\"1864\" y=\"562\" fill=\"#f5f9fc\" stroke-width=\"0\" font-size=\"14\" font-weight=\"650\" text-anchor=\"end\">--</text></g></g><g id=\"svg_card_widget-alarms\"><rect id=\"svg_panel_widget-alarms\" x=\"40\" y=\"882\" width=\"1840\" height=\"158\" rx=\"14\" fill=\"#101b28\" stroke=\"#26394c\"/><text x=\"58\" y=\"910\" fill=\"#aebdca\" font-size=\"15\" font-family=\"PingFang SC\">报警与数据质量</text><circle cx=\"66\" cy=\"928\" r=\"5\" fill=\"#213d52\"/><text x=\"82\" y=\"932\" fill=\"#c7d5df\" font-size=\"13\" font-family=\"PingFang SC\">需要接入真实数据源后才能显示实时内容</text></g></g></svg>",
     "type": "svg"
   },
   "reviewRequired": true

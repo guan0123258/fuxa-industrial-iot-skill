@@ -1,0 +1,68 @@
+{
+  "device": {
+    "id": "production-line-01",
+    "name": "ProductionLine"
+  },
+  "variables": [
+    {
+      "id": "line01.pressure",
+      "name": "进气压力",
+      "unit": "bar",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 16 },
+      "display": ["pressure-gauge", "trend"]
+    },
+    {
+      "id": "line01.temperature",
+      "name": "反应釜温度",
+      "unit": "°C",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 120 },
+      "display": ["thermometer", "trend"]
+    },
+    {
+      "id": "line01.current",
+      "name": "电机电流",
+      "unit": "A",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 200 },
+      "display": ["gauge", "trend"]
+    },
+    {
+      "id": "line01.rpm",
+      "name": "风机转速",
+      "unit": "rpm",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 3000 },
+      "display": ["rpm-gauge", "trend"]
+    },
+    {
+      "id": "line01.load",
+      "name": "设备负载率",
+      "unit": "%",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 100 },
+      "display": ["gauge", "trend"]
+    },
+    {
+      "id": "line01.level",
+      "name": "储罐液位",
+      "unit": "%",
+      "dataType": "number",
+      "engineeringRange": { "min": 0, "max": 100 },
+      "display": ["tank", "trend"]
+    },
+    {
+      "id": "line01.running",
+      "name": "设备运行状态",
+      "dataType": "boolean",
+      "display": ["status"]
+    },
+    {
+      "id": "line01.standby",
+      "name": "备用泵状态",
+      "dataType": "boolean",
+      "display": ["status"]
+    }
+  ]
+}

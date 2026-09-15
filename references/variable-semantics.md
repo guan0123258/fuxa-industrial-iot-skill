@@ -1,46 +1,34 @@
 # Variable Semantics
 
-## Authoritative-first contract
+## 1. Precedence
 
-A variable can contain:
+Highest first:
 
-```json
-{
-  "id": "mainEngine.rpm",
-  "name": "主机转速",
-  "parameterCode": "40004",
-  "collectionCode": "4",
-  "unit": "rpm",
-  "dataType": "number",
-  "semanticType": "rpm",
-  "engineeringRange": { "min": 0, "max": 2400 },
-  "thresholds": { "warningHigh": 2100, "alarmHigh": 2250 },
-  "display": ["rpm-gauge", "trend"],
-  "writable": false,
-  "source": { "path": "values.rpm" }
-}
-```
+1. Metadata supplied explicitly by the customer or project engineer: `semanticType`, `display`, engineering range, thresholds, `writable`.
+2. Device and thing-model metadata from the cloud platform.
+3. Operator-maintained mappings: parameter code, collection code, device model, tag code.
+4. Name, unit and datatype heuristics.
+5. Safe generic fallback.
 
-The fields `semanticType`, `display`, `engineeringRange`, `thresholds`, and `writable` should be provided by the customer/project engineer whenever available.
+## 2. Confidence
 
-## Inference order
+| Source | Confidence | Review |
+|---|---|---|
+| explicit | 1.00 | not required |
+| operator override | configured, default 0.95 | below 0.70 requires review |
+| unit and name agree | 0.92 | not required |
+| unit only | 0.78 | not required |
+| name only | 0.72 | not required |
+| datatype fallback | 0.35 | required |
 
-1. Explicit semantic metadata.
-2. Operator overrides keyed by variable ID, parameter code, collection code, or name.
-3. Unit inference (`°C`, `bar`, `rpm`, `A`, `V`, `kW`, `%`, etc.).
-4. Chinese/English name inference.
-5. Generic fallback based on datatype.
+Anything below 0.70 sets `needsReview: true` and must not drive an alarm or a control.
 
-## Safe defaults
+## 3. Recognised intents
 
-- Unknown numeric -> KPI + trend.
-- Unknown boolean -> status indicator.
-- Unknown string -> text/table.
-- No guessed field becomes writable.
-- Inference confidence below 0.70 -> `needsReview=true`.
+`temperature`, `pressure`, `rpm`, `current`, `voltage`, `power`, `energy`, `frequency`, `flow`, `level`, `fuel`, `humidity`, `vibration`, `runtime`, `torque`, `load`, `alarm`, `status`, `generic-number`, `text`.
 
-## Typical marine semantics
+Each carries a default display intent, for example `temperature` renders as `thermometer` plus `trend`, and `load` renders as `gauge` plus `trend`.
 
-`temperature`, `pressure`, `rpm`, `speed`, `current`, `voltage`, `power`, `energy`, `frequency`, `flow`, `level`, `fuel`, `humidity`, `vibration`, `runtime`, `status`, `alarm`, `heading`, `draft`, `trim`, `list`, `torque`, `load`.
+## 4. Write permission
 
-The supplied classifier is intentionally conservative. Expand `semantic-overrides.example.json` with your own parameter-code dictionary as your platform matures.
+`writable` is copied from the manifest only. It is never inferred from a name, a datatype or a display intent. A value that looks like a switch still renders as a read-only status element unless the metadata explicitly declares it writable.

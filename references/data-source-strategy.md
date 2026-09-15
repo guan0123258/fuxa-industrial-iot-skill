@@ -1,42 +1,32 @@
 # Data Source Strategy
 
-## Mode A — direct FUXA WebAPI pull
+## 1. Principle
 
-Use when:
+FUXA renders data; the cloud platform owns it. Choose the integration mode that keeps that boundary intact.
 
-- endpoint shape is stable;
-- authentication is simple and safe to configure in FUXA;
-- polling load is acceptable;
-- no cross-tenant secret should be exposed to FUXA clients.
+## 2. Modes
 
-Advantages: fewer moving parts. Disadvantages: FUXA becomes coupled to endpoint paths and authentication details.
+| Mode | Shape | Use when |
+|---|---|---|
+| WebAPI pull | FUXA reads a cloud-platform REST endpoint directly | current-value API is stable, authentication is straightforward, JSON shape is fixed |
+| Read-only bridge | a small process polls the platform API and writes into pre-created FUXA tags | the platform API is read-only, changes independently, or needs reshaping |
 
-## Mode B — industrial-cloud bridge (recommended starting point)
+The read-only bridge is the default recommendation: it isolates FUXA from upstream API churn and keeps the platform as the single writer.
 
-The bridge polls the industrial-cloud snapshot API server-side and pushes only normalized current values to FUXA tags.
+## 3. History
 
-Advantages:
+Do not duplicate long-term history into FUXA when the platform already stores it. For aggregation, windows or comparisons, request an analytics endpoint from the platform layer and visualize the result.
 
-- stable FUXA tag IDs;
-- isolates upstream JSON/authentication changes;
-- centralized retry/stale/error handling;
-- natural place to apply tenant/device mapping;
-- read-only upstream flow is easy to audit.
+FUXA's own chart history is suitable for short operational windows displayed next to the equipment that produces them.
 
-Disadvantages: one extra small service/process.
+## 4. Polling
 
-## Mode C — direct ClickHouse
+Match the polling interval to the process, not to what the transport can sustain. A three-second interval is a safe starting point for cross-network Modbus forwarding; one-second polling has been observed to trigger internal timeouts in some FUXA and gateway combinations.
 
-Not recommended as the default in this architecture. It bypasses the product API boundary, couples visualization to storage schema, and complicates tenant authorization. Use only for deliberate internal analytics deployments.
+Verify a data path by checking that the timestamps advance across consecutive samples, not just that a value is present.
 
-## History
+## 5. Boundaries
 
-For long-term history, expose endpoints such as:
-
-```text
-GET /api/v1/devices/{id}/timeseries?keys=...&start=...&end=...&interval=5m&agg=avg
-GET /api/v1/fleets/{id}/kpis?period=30d
-GET /api/v1/alarms/summary?groupBy=system&period=7d
-```
-
-Let ClickHouse do aggregation. FUXA renders the operational result; it should not have to reimplement your warehouse semantics.
+- Do not read the platform database directly; go through its API.
+- Do not create a second writer to a device. If the gateway already owns the device connection, request values from the gateway instead of opening a parallel path.
+- Confirm data freshness with the platform's own status fields before presenting a reading as live.

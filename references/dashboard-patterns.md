@@ -1,35 +1,36 @@
 # Dashboard Patterns
 
-## Neutral widget intents
+## 1. Layout principles
 
-The dashboard plan is deliberately independent of FUXA's internal widget schema. The agent first produces approved visual intent, then translates it to native FUXA items/SVG widgets after probing the target instance.
+1. System hierarchy before decoration: overview, then equipment, then detail.
+2. Status and alarms stay visible at all times.
+3. Numbers stay readable even when gauges are used; a gauge never replaces the exact value.
+4. Trends sit next to the equipment or KPI they explain.
+5. State is never encoded by colour alone.
 
-| Intent | Typical use |
+## 2. Presets
+
+| Preset | Layout | Typical use |
+|---|---|---|
+| `plant-overview` | KPI row, equipment column, trend panel, alarm strip | whole-plant status |
+| `production-overview` | primary metric row, key trend, system status, footer | one production line |
+| `level-system` | process mimic with tank summary and level panel | tanks, pumps, valves |
+| `alarm-center` | severity summary, active alarm list, detail panel | alarm operations |
+
+Presets only define zones and scale. Widget choice comes from variable semantics.
+
+## 3. Widget choice
+
+| Data shape | Presentation |
 |---|---|
-| `kpi` | Current value, totals, running hours, efficiency. |
-| `status` / `traffic-light` | Running/stopped/fault/online. |
-| `gauge` | Bounded pressure/current/voltage/load. |
-| `rpm-gauge` | Rotational speed. |
-| `thermometer` | Temperature. |
-| `tank` | Tank/level/fuel/ballast percentage. |
-| `trend` / `multi-trend` | Time-series behavior. |
-| `bar` / `donut` | Aggregated counts or composition from an analytics API. |
-| `alarm-list` | Active/recent alarms. |
-| `equipment-matrix` | Many pumps/generators/auxiliaries at a glance. |
-| `process-mimic` | Pipes, valves, pumps, tanks and process flow. |
-| `vessel-attitude` | Draft/trim/list/stability summary. |
-| `heading` | Heading/compass-like display. |
+| bounded analog with a known range | circular gauge plus a bound value |
+| temperature | bar gauge or thermometer plus a trend |
+| level or volume | bar gauge plus tank summary |
+| boolean state | status value with step ranges |
+| boolean control with a reviewed write path | switch |
+| fast-moving analog | trend next to the equipment |
+| many equipment states | matrix, one bound value per row |
 
-## Layout rules
+## 4. Aggregates
 
-- Put alarm/unsafe states where they remain visible without scrolling.
-- Prefer status + numeric value together over color-only encoding.
-- Use engineering units next to values.
-- Use consistent semantic locations across vessel pages (alarm summary, navigation, time/staleness).
-- Avoid decorative gauges when a precise KPI + trend is more informative.
-- For 20+ variables, group by system/equipment rather than filling the page with gauges.
-- Distinguish "data stale/offline" from a valid process value of zero.
-
-## BI boundary
-
-FUXA is excellent for real-time operational visualization and industrial mimics. For Top-N across hundreds of devices, month-over-month analysis, arbitrary SQL, pivot/drill-down, and OLAP, obtain aggregated data from ClickHouse through the industrial-cloud API or use a dedicated BI surface.
+A bar chart, donut, ranking or period comparison must not pretend that one telemetry point carries the required meaning. Request an analytics series from the platform layer, or present the raw value instead.

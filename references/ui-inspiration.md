@@ -1,31 +1,28 @@
-# Marine UI Inspiration Index
+# UI Reference Index
 
-These links are **reference material only**. Do not download/copy the screenshots into a customer product without checking rights. The supplied presets are original layouts that borrow general HMI information-design patterns, not branded artwork.
+## 1. Standards
 
-## Ballast and process mimic patterns
+Prefer published standards over vendor screenshots. They are stable, citable and free of branding concerns.
 
-- Ulstein X-CONNECT / IAS: dark ballast schematic, tanks, pumps, piping and direct state visualization.  
-  https://ulstein.com/system-integration/automation-solutions/integrated-automation-system
-- Kongsberg K-Chief: vessel automation and ballast process views with equipment state and alarms.  
-  https://www.kongsberg.com/maritime/products/engines-engine-room-and-automation-systems/automation-safety-and-control/vessel-automation-k-chief/
-- Emerson marine/passenger-ship examples: ballast operations with line diagrams, tank levels and alarm strip.  
-  https://www.emerson.com/fr/measurement-instrumentation/industries/marine/passenger-ships
+| Standard | Subject |
+|---|---|
+| ISA-101 | HMI design, philosophy and style |
+| IEC 60073 | coding principles for indicators and actuators |
+| EEMUA 191 | alarm systems design, management and procurement |
+| ISO 9241-110 | interaction principles |
+| NUREG-0700 | human-system interface design review guidelines |
 
-## Vessel overview / operational intelligence
+## 2. Patterns worth reusing
 
-- Kongsberg K-Chief marine automation system: multi-system vessel overview and common-interface patterns.  
-  https://www.kongsbergmaritime.com/products/systems-and-solutions/systems/k-chief-marine-automation-system/
-- Valmet DNAe UI for Marine: role/task-oriented process and sub-process visualization.  
-  https://www.valmet.com/automation/marine/user-interface/
-- Hoppe Marine SECURELOAD: ship/tank/stability visualization patterns.  
-  https://www.hoppe-marine.com/product/control-systems/dock-control
+- A dark, low-glare operational background for control-room displays.
+- System hierarchy first: overview, equipment, detail.
+- Persistent status and alarm visibility.
+- Process topology drives mimic layout: equipment, then lines, then instruments.
+- Exact numbers remain visible when gauges are present.
+- Trends sit with the equipment they explain.
+- Redundant state encoding: shape, position and text, not colour alone.
+- Consistent alarm priority treatment, with the highest severity always reachable.
 
-## Design lessons captured in the original presets
+## 3. Scope note
 
-- dark low-glare operational background;
-- system hierarchy before decoration;
-- alarm/status visibility at all times;
-- tank/pump/valve symbols organized by process topology;
-- precise numbers remain visible even when gauges are used;
-- trends near the equipment/KPI they explain;
-- different states are not encoded by color alone.
+This index is reference material. The presets shipped in `templates/dashboard-presets/` are original layouts built from the patterns above. Do not copy third-party screenshots or branded assets into a customer product without checking rights.

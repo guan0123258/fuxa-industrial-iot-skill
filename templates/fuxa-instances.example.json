@@ -12,9 +12,9 @@
       "insecure": false
     },
     {
-      "name": "shipyard-prod",
-      "url": "https://fuxa-shipyard.example.com",
-      "apiKeyEnv": "FUXA_SHIPYARD_API_KEY",
+      "name": "plant-prod",
+      "url": "https://fuxa-plant.example.com",
+      "apiKeyEnv": "FUXA_PLANT_API_KEY",
       "insecure": false
     }
   ]

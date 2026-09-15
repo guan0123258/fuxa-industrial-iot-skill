@@ -3,43 +3,43 @@
   "cmd": "charts",
   "data": [
     {
-      "id": "chart-engine-room-overview-widget-key-trends",
-      "name": "机舱总览 · 关键参数趋势",
+      "id": "chart-production-overview-widget-key-trends",
+      "name": "生产线总览 · 关键参数趋势",
       "lines": [
         {
-          "id": "mainEngine.exhaustTemp",
-          "name": "主机排气温度",
-          "device": "ship01-main-engine",
+          "id": "line01.pressure",
+          "name": "进气压力",
+          "device": "production-line-01",
           "color": "#4aa8ff"
         },
         {
-          "id": "mainEngine.oilPressure",
-          "name": "润滑油压力",
-          "device": "ship01-main-engine",
+          "id": "line01.temperature",
+          "name": "反应釜温度",
+          "device": "production-line-01",
           "color": "#36d6c0"
         },
         {
-          "id": "mainEngine.rpm",
-          "name": "主机转速",
-          "device": "ship01-main-engine",
+          "id": "line01.current",
+          "name": "电机电流",
+          "device": "production-line-01",
           "color": "#9a86ff"
         },
         {
-          "id": "mainEngine.current",
-          "name": "主机电流",
-          "device": "ship01-main-engine",
+          "id": "line01.rpm",
+          "name": "风机转速",
+          "device": "production-line-01",
           "color": "#ffb34d"
         },
         {
-          "id": "mainEngine.runningHours",
-          "name": "累计运行时间",
-          "device": "ship01-main-engine",
+          "id": "line01.load",
+          "name": "设备负载率",
+          "device": "production-line-01",
           "color": "#ff7285"
         },
         {
-          "id": "mainEngine.unknownMetric",
-          "name": "参数X7",
-          "device": "ship01-main-engine",
+          "id": "line01.level",
+          "name": "储罐液位",
+          "device": "production-line-01",
           "color": "#50d890"
         }
       ]

@@ -1,14 +1,14 @@
 {
   "byVariableId": {},
   "byParameterCode": {
-    "40003": {
+    "PT-101": {
       "semanticType": "pressure",
       "display": ["pressure-gauge", "trend"],
       "confidence": 0.98
     },
-    "40005": {
-      "semanticType": "current",
-      "display": ["gauge", "trend"],
+    "TT-201": {
+      "semanticType": "temperature",
+      "display": ["thermometer", "trend"],
       "confidence": 0.98
     }
   },

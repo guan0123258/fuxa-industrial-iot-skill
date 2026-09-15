@@ -6,7 +6,7 @@ import { classifyManifest } from './variable-classifier.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 
-export async function loadPreset(name = 'engine-room') {
+export async function loadPreset(name = 'production-overview') {
   const file = path.join(ROOT, 'templates', 'dashboard-presets', `${name}.json`);
   return readJson(file);
 }
@@ -36,7 +36,7 @@ function layoutGrid(zone, count, { gap = 18, minCols = 3, maxCols = 6 } = {}) {
 
 export async function makeDashboardPlan({ manifest, request = {}, overrides = {} }) {
   const classified = classifyManifest(manifest, overrides);
-  const preset = await loadPreset(request.preset || 'engine-room');
+  const preset = await loadPreset(request.preset || 'production-overview');
   const width = Number(request.width || 1920);
   const height = Number(request.height || 1080);
   const scaleX = width / 1920;
@@ -98,9 +98,9 @@ export async function makeDashboardPlan({ manifest, request = {}, overrides = {}
     });
   }
 
-  if ((request.preset || '') === 'ballast-system' && zones.mimic) {
+  if ((request.preset || '') === 'level-system' && zones.mimic) {
     widgets.push({
-      id: 'widget-ballast-mimic', type: 'process-mimic', title: '压载系统流程',
+      id: 'widget-process-mimic', type: 'process-mimic', title: '工艺流程',
       variableIds: vars.filter((v) => ['level', 'pressure', 'status', 'flow'].includes(v.semanticType)).map((v) => v.id),
       rect: zones.mimic
     });
@@ -112,7 +112,7 @@ export async function makeDashboardPlan({ manifest, request = {}, overrides = {}
     subtitle: request.subtitle || '',
     preset: preset.id,
     size: { width, height },
-    theme: request.theme || 'marine-dark',
+    theme: request.theme || 'industrial-dark',
     sourceDevice: classified.device || null,
     generatedAt: new Date().toISOString(),
     widgets,

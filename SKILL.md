@@ -1,126 +1,92 @@
 ---
 name: fuxa-industrial-iot-skill
-description: Design, generate, validate, inspect, and safely apply industrial SCADA/HMI dashboards to FUXA. Optimized for an industrial-cloud architecture where device data remains in an upstream IoT platform and FUXA acts as the visualization layer. Supports version/capability probing, explicit-first variable semantics, shipyard/marine presets, safe dry-run project patches, and API-to-FUXA tag bridging.
+description: Design, generate, validate, inspect, and safely apply industrial SCADA/HMI dashboards to FUXA. Assumes device data stays in an upstream cloud platform and FUXA acts as the visualization layer. Supports version and capability probing, explicit-first variable semantics, layout presets, dry-run project patches, and API-to-tag bridging.
 ---
 
 # FUXA Industrial IoT Skill
 
-Use this skill when the user asks to create or modify FUXA dashboards, SCADA/HMI views, industrial BI-like pages, equipment mimics, trends, gauges, status panels, alarm pages, or a visualization integration between an industrial cloud and FUXA.
+## 1. Scope
 
-## Operating model
+### 1.1 When to use this skill
 
-Assume FUXA is a **visualization/SCADA rendering layer**, not the system of record, unless the user explicitly says otherwise. For the reference architecture in this skill:
+Use it for tasks that create or change FUXA SCADA/HMI views, industrial dashboards, equipment mimics, trends, gauges, status panels, alarm pages, or an integration between an industrial cloud platform and FUXA.
 
-`Modbus TCP device -> EC100 edge gateway -> MQTT -> upstream IoT platform -> Kafka -> ClickHouse -> industrial-cloud API -> FUXA`
+### 1.2 Operating model
 
-The customer's industrial-cloud UI remains the product-facing portal. FUXA may be embedded behind the portal or used as a visualization service. Do not bypass the industrial-cloud/API boundary to query ClickHouse directly unless the user explicitly approves that architecture.
+FUXA is a visualization layer, not the system of record.
 
-## Mandatory workflow
+```text
+field devices -> edge gateway -> cloud platform -> FUXA
+```
 
-1. **Understand the requested page and data source.** Ask for or consume variable metadata whenever available. Prefer an explicit variable manifest over inference.
-2. **Probe FUXA before mutating it.** Run `node scripts/probe-fuxa.mjs ...` or inspect `/api/version`, `/api/project`, and supported endpoints. Never assume the local FUXA instance exactly matches a hard-coded version.
-3. **Inspect existing project shapes.** For edits to a real instance, run `inspect-fuxa-project.mjs` and use the live project's structures as examples. Prefer schema learning/capability detection to version-only branching.
-4. **Classify variables with explicit metadata first.** Use `classify-variables.mjs`; low-confidence semantics must be marked for review. Never infer write permission.
-5. **Generate a dashboard plan, a preview and a real FUXA view.** Use `generate-dashboard.mjs`. It writes `dashboard-plan.json`, `binding-plan.json`, `dashboard-preview.svg`, **and** the shipping artefacts `fuxa-view.patch.json` (`set-view`) plus `fuxa-charts.patch.json` (`charts`). `dashboard-preview.svg` is a human preview only.
-6. **Validate before apply.** Run `validate-dashboard.mjs --plan <plan> --view <fuxa-view.patch.json> --charts <fuxa-charts.patch.json>` and resolve duplicate IDs, missing bindings, unsupported widgets, container-less gauges, or low-confidence safety-sensitive semantics. A view that would render values nothing updates is rejected.
-7. **Apply only with explicit intent.** `apply-to-fuxa.mjs` is dry-run by default. Use `--apply` only after the user asked to change the FUXA project. Back up `/api/project` before project mutation. Apply the charts patch before, or together with, the view patch.
+Device data remains in the upstream platform. The customer's cloud portal stays the product-facing entry point; FUXA may be embedded behind it or used as a visualization service. Do not bypass the cloud-platform API boundary to query the platform's database directly unless the user explicitly approves that architecture.
 
-## Variable semantics policy
+## 2. Workflow
 
-Use this precedence:
+1. **Understand the request and the data source.** Consume variable metadata whenever it is available; prefer an explicit variable manifest over inference.
+2. **Probe before mutating.** Run `scripts/probe-fuxa.mjs` and `scripts/inspect-fuxa-project.mjs` to learn the version and the live project structure. Never assume the local FUXA instance matches a hard-coded version.
+3. **Classify variables with explicit metadata first.** Use `scripts/classify-variables.mjs`; mark low-confidence semantics for review. Write permission is never inferred.
+4. **Generate the plan, the preview and the view patch.** `scripts/generate-dashboard.mjs` writes `dashboard-plan.json`, `binding-plan.json`, `dashboard-preview.svg`, and the shipping artefacts `fuxa-view.patch.json` (`set-view`) plus `fuxa-charts.patch.json` (`charts`). The preview is for human review only.
+5. **Validate before applying.** Run `scripts/validate-dashboard.mjs --plan ... --view ... --charts ...` and resolve duplicate ids, missing bindings, unsupported widgets, container-less gauges, and safety-sensitive low-confidence semantics.
+6. **Apply with explicit intent.** `scripts/apply-to-fuxa.mjs` is dry-run by default. Use `--apply` only when the user asked for the project to change. The current `/api/project` is backed up before mutation. Apply the charts patch before, or together with, the view patch.
 
-1. `semanticType`, `display`, engineering range, thresholds, and `writable` explicitly supplied by the customer/user.
-2. Industrial-cloud device/thing-model metadata.
-3. Operator-maintained mappings for `parameterCode`, `collectionCode`, device model, or tag code.
-4. Name + unit + datatype heuristic inference.
-5. Safe generic fallback.
+## 3. Variable semantics
 
-If semantics remain uncertain, use a neutral KPI/text/status presentation and set `needsReview: true`. A guessed variable must **never** become writable. A write/control widget requires `writable: true` from authoritative metadata plus a configured write path.
+Precedence, highest first:
 
-## Recommended data modes
+1. `semanticType`, `display`, engineering range, thresholds and `writable` supplied explicitly by the customer or project engineer.
+2. Device and thing-model metadata from the cloud platform.
+3. Operator-maintained mappings for parameter code, collection code, device model or tag code.
+4. Name, unit and datatype heuristics.
+5. A safe generic fallback.
+
+When the semantics stay uncertain, present the variable as a neutral KPI or text widget and mark `needsReview: true`.
+
+## 4. Data modes
 
 Prefer one of these two modes:
 
-- **WebAPI pull**: FUXA reads a stable industrial-cloud REST endpoint. Good for simple current-value APIs with straightforward authentication and JSON shape.
-- **Read-only bridge**: a small process polls the industrial-cloud API and pushes current values into pre-created FUXA virtual tags. This decouples FUXA from upstream API shape and is the recommended default when the industrial-cloud API is read-only or changes independently.
+- **WebAPI pull** — FUXA reads a stable cloud-platform REST endpoint. Suitable for simple current-value APIs with straightforward authentication and a stable JSON shape.
+- **Read-only bridge** — a small process polls the cloud-platform API and pushes current values into pre-created FUXA tags. This decouples FUXA from the upstream API shape and is the default recommendation when the platform API is read-only or changes independently.
 
-Do not duplicate long-term history into FUXA just to draw analytics if ClickHouse/industrial-cloud already owns history. For complex historical aggregation, request an industrial-cloud analytics endpoint and visualize the result, or use a dedicated analytics surface alongside FUXA.
+Do not duplicate long-term history into FUXA if the cloud platform already owns it. For historical aggregation, request an analytics endpoint from the platform layer and visualize the result.
 
-## Dashboard types
+## 5. Widget intents
 
-The planner may use these neutral widget intents: `kpi`, `status`, `traffic-light`, `gauge`, `rpm-gauge`, `pressure-gauge`, `thermometer`, `tank`, `progress`, `sparkline`, `trend`, `multi-trend`, `bar`, `donut`, `table`, `alarm-list`, `equipment-matrix`, `process-mimic`, `vessel-attitude`, `heading`, `map`, `text`, and `image-mimic`.
+Available intents: `kpi`, `status`, `traffic-light`, `gauge`, `rpm-gauge`, `pressure-gauge`, `thermometer`, `tank`, `progress`, `sparkline`, `trend`, `multi-trend`, `bar`, `donut`, `table`, `alarm-list`, `equipment-matrix`, `process-mimic`, `map`, `text`, `image-mimic`.
 
-Not every intent is guaranteed to be a native FUXA widget on every release. When native support is missing, generate an SVG widget or degrade to a supported representation. Confirm capability on the target instance.
+Not every intent has a native FUXA widget on every release. Confirm capability on the target instance and degrade to a supported representation when needed. `references/widget-catalog.md` maps each intent to the FUXA element that renders it.
 
-## Rendering rules: never ship a static picture
+## 6. Rendering requirements
 
-An operator reads whatever is on screen as plant state, so a value that nothing
-updates is a defect, not a cosmetic issue.
+`scripts/lib/fuxa-view-renderer.mjs` is the single place that turns an intent into a FUXA element. Requirements it enforces:
 
-- **The preview is not the deliverable.** `dashboard-preview.svg` exists so a
-  human can review intent. It contains frozen sample values by design and must
-  never be pushed into FUXA.
-- **The deliverable is `fuxa-view.patch.json`.** Every widget that carries a
-  variable is emitted as a native, data-bound FUXA element:
-  - analog gauges → `svg-ext-html_bag` (GaugeType 0), where the coloured arc is
-    the value and the grey `strokeColor` arc is the remaining range, drawn on the
-    same circle so the two **overlap** rather than sit side by side;
-  - thermometer / tank / progress → `svg-ext-gauge_progress` (grey track plus a
-    fill that grows from the bottom);
-  - kpi / status → `svg-ext-value` with unit or step ranges;
-  - writable booleans (only with explicit `writable: true`) →
-    `svg-ext-html_switch`;
-  - trends → `svg-ext-html_chart` plus a `charts` definition that binds each
-    line to a device tag.
-- **Keep each widget's mount container.** FUXA mounts a widget into a child
-  element it finds by id prefix (`D-BAG_`, `B-GXP_`/`A-GXP_`, `T-HXT_`,
-  `D-HXC_`). A widget without its container renders blank, and the validator
-  fails that case.
-- **Decorative intents are allowed but must be labelled.** `alarm-list` and
-  `process-mimic` have no single tag to bind; the generator warns for each one
-  and they must not be presented as live data.
-- **No inferred write paths.** A control widget requires `writable: true` from
-  authoritative metadata plus a reviewed command path.
+1. Every widget that carries a variable emits at least one native, tag-bound FUXA item. A rendered value with no binding is a static picture, and `scripts/validate-dashboard.mjs --view` fails it.
+2. An analog gauge draws the value as a coloured arc over a grey range arc on the same circle, so the two overlap rather than sit side by side.
+3. Each widget keeps the mount container FUXA looks up by id prefix: `D-BAG_`, `A-GXP_`/`B-GXP_`, `T-HXT_`, `D-HXC_`. Without the container, FUXA mounts nothing.
+4. Intents with no single tag to bind (`alarm-list`, `process-mimic`) are allowed as decoration; the generator emits a warning for each one and they must not be presented as live data.
+5. A control widget requires `writable: true` from authoritative metadata plus a reviewed command path.
 
-See `references/widget-catalog.md` for the full intent → element contract.
+## 7. Safety
 
+- Read-only is the default; use `--apply` only on explicit instruction.
+- Back up `/api/project` before any project mutation and read it back afterwards.
+- Never edit FUXA's internal database or configuration files as a shortcut.
+- Never print passwords, API keys, JWTs or upstream secrets. Pass secrets through environment variables.
+- TLS certificate verification is on by default; `--insecure` is for test hosts only.
+- Do not expose the FUXA editor or admin surface directly to customer users unless the deployment architecture requires it. Prefer a reverse proxy or access isolation when embedding FUXA runtime views in a portal.
 
-## Marine presets
+## 8. Key files
 
-Use the provided original presets as starting points:
+| Path | Purpose |
+|---|---|
+| `scripts/lib/fuxa-view-renderer.mjs` | intent to FUXA element, and view validation |
+| `scripts/lib/dashboard-planner.mjs` | layout planning and presets |
+| `scripts/lib/variable-classifier.mjs` | semantic classification |
+| `scripts/lib/svg-renderer.mjs` | human-review preview only |
+| `scripts/install-skill.mjs` | install into VS Code Copilot or Codex |
+| `scripts/check-fuxa-fleet.mjs` | multi-instance version check |
+| `references/widget-catalog.md` | intent to element contract |
+| `docs/architecture.md` | architecture and data-source decisions |
 
-- `vessel-overview`: fleet/vessel operational overview with KPIs, system status, trends and alarms.
-- `engine-room`: main/auxiliary engine room metrics, gauges and subsystem status.
-- `ballast-system`: tanks, pumps, valves, levels, pressure and schematic flow.
-- `alarm-center`: active alarms, severity summary, source/system grouping and recent trend.
-
-These are original layouts informed by common marine HMI patterns; do not copy third-party screenshots or branded UI assets.
-
-## FUXA compatibility policy
-
-The reference implementation was verified against public FUXA documentation through v1.3.4, but the skill must not reject a newer version merely because it is unknown. Probe endpoints and project structures. Treat these as anchors, not hard gates:
-
-- v1.2.8 introduced documented Web API/Swagger and API-key management.
-- v1.3.0 moved documentation and expanded data/history capabilities.
-- v1.3.1-v1.3.4 added multiple HMI, view, widget, reverse-proxy, and security improvements.
-
-Use `references/fuxa-version-compatibility.md` for details.
-
-## Safety and change control
-
-- Read-only is the default.
-- TLS certificate verification is on by default; `--insecure` is test-only.
-- Never print passwords, API keys, JWTs, or upstream secrets.
-- Never edit FUXA's internal database/config files as a shortcut.
-- Back up the current project before project mutation.
-- Never create writeback/control behavior based solely on inferred semantics.
-- Do not expose the FUXA editor/admin surface directly to customer users unless the deployment architecture explicitly requires it.
-- Prefer reverse proxy and access isolation when embedding FUXA runtime views in the industrial-cloud portal.
-
-## Key files
-
-For multi-instance version checks use `scripts/check-fuxa-fleet.mjs`. Read `README.md` for the package overview and `docs/INSTALL.md` for installation. For architecture decisions use `docs/ARCHITECTURE.md`. For a shipyard quick start use `docs/QUICKSTART_SHIPYARD.md`.
-
-`scripts/lib/fuxa-view-renderer.mjs` is the single place that decides how an intent becomes a FUXA element. Change widget behaviour there, not in the preview renderer, and keep `references/widget-catalog.md` in step with it.
-
-Use the scripts in `scripts/` rather than rewriting one-off clients. All scripts are dependency-free Node.js and require Node 18+.
+Change widget behaviour in `fuxa-view-renderer.mjs`, not in the preview renderer, and keep `references/widget-catalog.md` in step with it. All scripts are dependency-free Node.js and require Node 18+.

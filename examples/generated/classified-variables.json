@@ -1,173 +1,148 @@
 {
   "device": {
-    "id": "ship01-main-engine",
-    "name": "船舶01-主机",
-    "type": "main-engine",
-    "vesselId": "ship01"
+    "id": "production-line-01",
+    "name": "ProductionLine"
   },
   "variables": [
     {
-      "id": "mainEngine.exhaustTemp",
-      "name": "主机排气温度",
-      "parameterCode": "40002",
-      "collectionCode": "2",
-      "unit": "°C",
-      "dataType": "number",
-      "semanticType": "temperature",
-      "engineeringRange": {
-        "min": 0,
-        "max": 150
-      },
-      "thresholds": {
-        "warningHigh": 95,
-        "alarmHigh": 110
-      },
-      "display": [
-        "thermometer",
-        "trend"
-      ],
-      "writable": false,
-      "source": {
-        "path": "values.exhaustTemp"
-      },
-      "sampleValue": 72.6,
-      "semanticConfidence": 1,
-      "semanticSource": "explicit",
-      "needsReview": false
-    },
-    {
-      "id": "mainEngine.oilPressure",
-      "name": "润滑油压力",
-      "parameterCode": "40003",
-      "collectionCode": "3",
+      "id": "line01.pressure",
+      "name": "进气压力",
       "unit": "bar",
       "dataType": "number",
       "engineeringRange": {
         "min": 0,
-        "max": 10
+        "max": 16
       },
-      "writable": false,
-      "source": {
-        "path": "values.oilPressure"
-      },
-      "sampleValue": 4.8,
-      "semanticType": "pressure",
       "display": [
         "pressure-gauge",
         "trend"
       ],
+      "semanticType": "pressure",
       "semanticConfidence": 0.92,
       "semanticSource": "unit+name",
-      "needsReview": false
+      "needsReview": false,
+      "writable": false
     },
     {
-      "id": "mainEngine.rpm",
-      "name": "主机转速",
-      "parameterCode": "40004",
-      "collectionCode": "4",
-      "unit": "rpm",
-      "dataType": "number",
-      "semanticType": "rpm",
-      "engineeringRange": {
-        "min": 0,
-        "max": 2400
-      },
-      "display": [
-        "rpm-gauge",
-        "trend"
-      ],
-      "writable": false,
-      "source": {
-        "path": "values.rpm"
-      },
-      "sampleValue": 1830,
-      "semanticConfidence": 1,
-      "semanticSource": "explicit",
-      "needsReview": false
-    },
-    {
-      "id": "mainEngine.current",
-      "name": "主机电流",
-      "parameterCode": "40005",
-      "collectionCode": "5",
-      "unit": "A",
+      "id": "line01.temperature",
+      "name": "反应釜温度",
+      "unit": "°C",
       "dataType": "number",
       "engineeringRange": {
         "min": 0,
         "max": 120
       },
-      "writable": false,
-      "source": {
-        "path": "values.current"
+      "display": [
+        "thermometer",
+        "trend"
+      ],
+      "semanticType": "temperature",
+      "semanticConfidence": 0.92,
+      "semanticSource": "unit+name",
+      "needsReview": false,
+      "writable": false
+    },
+    {
+      "id": "line01.current",
+      "name": "电机电流",
+      "unit": "A",
+      "dataType": "number",
+      "engineeringRange": {
+        "min": 0,
+        "max": 200
       },
-      "sampleValue": 68.4,
-      "semanticType": "current",
       "display": [
         "gauge",
         "trend"
       ],
+      "semanticType": "current",
       "semanticConfidence": 0.92,
       "semanticSource": "unit+name",
-      "needsReview": false
+      "needsReview": false,
+      "writable": false
     },
     {
-      "id": "mainEngine.running",
-      "name": "主机运行状态",
-      "parameterCode": "RUN_ST",
-      "unit": "",
+      "id": "line01.rpm",
+      "name": "风机转速",
+      "unit": "rpm",
+      "dataType": "number",
+      "engineeringRange": {
+        "min": 0,
+        "max": 3000
+      },
+      "display": [
+        "rpm-gauge",
+        "trend"
+      ],
+      "semanticType": "rpm",
+      "semanticConfidence": 0.92,
+      "semanticSource": "unit+name",
+      "needsReview": false,
+      "writable": false
+    },
+    {
+      "id": "line01.load",
+      "name": "设备负载率",
+      "unit": "%",
+      "dataType": "number",
+      "engineeringRange": {
+        "min": 0,
+        "max": 100
+      },
+      "display": [
+        "gauge",
+        "trend"
+      ],
+      "semanticType": "load",
+      "semanticConfidence": 0.92,
+      "semanticSource": "unit+name",
+      "needsReview": false,
+      "writable": false
+    },
+    {
+      "id": "line01.level",
+      "name": "储罐液位",
+      "unit": "%",
+      "dataType": "number",
+      "engineeringRange": {
+        "min": 0,
+        "max": 100
+      },
+      "display": [
+        "tank",
+        "trend"
+      ],
+      "semanticType": "level",
+      "semanticConfidence": 0.92,
+      "semanticSource": "unit+name",
+      "needsReview": false,
+      "writable": false
+    },
+    {
+      "id": "line01.running",
+      "name": "设备运行状态",
       "dataType": "boolean",
-      "semanticType": "status",
       "display": [
         "status"
       ],
-      "writable": false,
-      "source": {
-        "path": "values.running"
-      },
-      "sampleValue": true,
-      "semanticConfidence": 1,
-      "semanticSource": "explicit",
-      "needsReview": false
+      "semanticType": "status",
+      "semanticConfidence": 0.72,
+      "semanticSource": "name",
+      "needsReview": false,
+      "writable": false
     },
     {
-      "id": "mainEngine.runningHours",
-      "name": "累计运行时间",
-      "parameterCode": "RUN_HOURS",
-      "unit": "h",
-      "dataType": "number",
-      "semanticType": "runtime",
+      "id": "line01.standby",
+      "name": "备用泵状态",
+      "dataType": "boolean",
       "display": [
-        "kpi",
-        "trend"
+        "status"
       ],
-      "writable": false,
-      "source": {
-        "path": "values.runningHours"
-      },
-      "sampleValue": 1342.6,
-      "semanticConfidence": 1,
-      "semanticSource": "explicit",
-      "needsReview": false
-    },
-    {
-      "id": "mainEngine.unknownMetric",
-      "name": "参数X7",
-      "parameterCode": "X7",
-      "unit": "",
-      "dataType": "number",
-      "writable": false,
-      "source": {
-        "path": "values.x7"
-      },
-      "sampleValue": 37.2,
-      "semanticType": "generic-number",
-      "display": [
-        "kpi",
-        "trend"
-      ],
-      "semanticConfidence": 0.35,
-      "semanticSource": "datatype-fallback",
-      "needsReview": true
+      "semanticType": "status",
+      "semanticConfidence": 0.72,
+      "semanticSource": "name",
+      "needsReview": false,
+      "writable": false
     }
   ]
 }

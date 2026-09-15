@@ -1,34 +1,34 @@
-# Security and Change Control
+# Security
 
-## Defaults
+## 1. Defaults
 
-- TLS verification: ON.
-- Mutation: OFF (dry-run).
-- Upstream industrial-cloud access: read-only.
-- FUXA write/control tags: OFF unless authoritative metadata explicitly enables them.
+| Item | Default |
+|---|---|
+| FUXA project mutation | dry-run, `--apply` required |
+| Pre-mutation backup | full `/api/project` written to `backups/` |
+| Post-mutation verification | project read back and checked |
+| TLS certificate verification | on |
+| Credentials | environment variables only |
 
-## Secrets
+## 2. Secrets
 
-Pass secrets through environment variables. Example configuration files contain environment-variable names, never actual tokens.
+Pass secrets through environment variables and reference them by name, for example `--api-key-env FUXA_API_KEY`. Never place a token in a JSON file that is committed, and never print a password, API key or JWT.
 
-Avoid logging authorization headers. The supplied HTTP helper redacts secret values from error context and does not dump request headers.
+Prefer an API key scoped to the minimum required permissions over an administrator account.
 
-## FUXA exposure
+## 3. Writeback and control
 
-Do not expose the editor/admin interface directly to customer users merely to show a dashboard. Put FUXA behind the industrial-cloud reverse proxy and authorization boundary, and expose only the runtime views required by the tenant.
+A control widget requires both:
 
-## Backups
+1. `writable: true` from authoritative metadata, and
+2. a reviewed command path that has actually been exercised.
 
-Before any `/api/projectData` mutation, save `/api/project` to a timestamped local backup. Keep deployment backups under your normal configuration/change-management process.
+Neither can be inferred. When either is missing, render a read-only status element and mark the variable for review.
 
-## Control/writeback
+## 4. Exposure
 
-A variable can receive a control widget only when all are true:
+Do not expose the FUXA editor or admin surface directly to customer users unless the deployment architecture explicitly requires it. When embedding runtime views in a portal, put FUXA behind a reverse proxy with access isolation.
 
-1. authoritative metadata says `writable: true`;
-2. a real industrial-cloud/upstream command API exists;
-3. authorization and audit behavior are defined;
-4. the target action is reviewed for interlocks/safety;
-5. the user explicitly asks to enable control.
+## 5. Test hosts
 
-Do not derive any of these from naming or numeric ranges.
+`--insecure` disables TLS certificate verification and is intended for self-signed test hosts only. Do not use it against production.

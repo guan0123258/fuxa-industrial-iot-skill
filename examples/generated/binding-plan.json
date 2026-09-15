@@ -3,60 +3,68 @@
   "source": "industrial-cloud-api",
   "bindings": [
     {
-      "variableId": "mainEngine.exhaustTemp",
-      "sourcePath": "values.exhaustTemp",
-      "fuxaTagId": "mainEngine.exhaustTemp",
-      "writable": false,
-      "semanticType": "temperature",
-      "needsReview": false
-    },
-    {
-      "variableId": "mainEngine.oilPressure",
-      "sourcePath": "values.oilPressure",
-      "fuxaTagId": "mainEngine.oilPressure",
+      "variableId": "line01.pressure",
+      "sourcePath": null,
+      "fuxaTagId": "line01.pressure",
       "writable": false,
       "semanticType": "pressure",
       "needsReview": false
     },
     {
-      "variableId": "mainEngine.rpm",
-      "sourcePath": "values.rpm",
-      "fuxaTagId": "mainEngine.rpm",
+      "variableId": "line01.temperature",
+      "sourcePath": null,
+      "fuxaTagId": "line01.temperature",
       "writable": false,
-      "semanticType": "rpm",
+      "semanticType": "temperature",
       "needsReview": false
     },
     {
-      "variableId": "mainEngine.current",
-      "sourcePath": "values.current",
-      "fuxaTagId": "mainEngine.current",
+      "variableId": "line01.current",
+      "sourcePath": null,
+      "fuxaTagId": "line01.current",
       "writable": false,
       "semanticType": "current",
       "needsReview": false
     },
     {
-      "variableId": "mainEngine.running",
-      "sourcePath": "values.running",
-      "fuxaTagId": "mainEngine.running",
+      "variableId": "line01.rpm",
+      "sourcePath": null,
+      "fuxaTagId": "line01.rpm",
+      "writable": false,
+      "semanticType": "rpm",
+      "needsReview": false
+    },
+    {
+      "variableId": "line01.load",
+      "sourcePath": null,
+      "fuxaTagId": "line01.load",
+      "writable": false,
+      "semanticType": "load",
+      "needsReview": false
+    },
+    {
+      "variableId": "line01.level",
+      "sourcePath": null,
+      "fuxaTagId": "line01.level",
+      "writable": false,
+      "semanticType": "level",
+      "needsReview": false
+    },
+    {
+      "variableId": "line01.running",
+      "sourcePath": null,
+      "fuxaTagId": "line01.running",
       "writable": false,
       "semanticType": "status",
       "needsReview": false
     },
     {
-      "variableId": "mainEngine.runningHours",
-      "sourcePath": "values.runningHours",
-      "fuxaTagId": "mainEngine.runningHours",
+      "variableId": "line01.standby",
+      "sourcePath": null,
+      "fuxaTagId": "line01.standby",
       "writable": false,
-      "semanticType": "runtime",
+      "semanticType": "status",
       "needsReview": false
-    },
-    {
-      "variableId": "mainEngine.unknownMetric",
-      "sourcePath": "values.x7",
-      "fuxaTagId": "mainEngine.unknownMetric",
-      "writable": false,
-      "semanticType": "generic-number",
-      "needsReview": true
     }
   ]
 }

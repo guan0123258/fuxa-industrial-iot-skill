@@ -46,7 +46,7 @@ export const TREND_WIDGET_TYPES = ['trend', 'multi-trend', 'area'];
 export const MATRIX_WIDGET_TYPES = ['equipment-matrix', 'status-grid'];
 
 /** Widgets that intentionally carry no tag binding and must stay non-value decor. */
-export const DECORATIVE_WIDGET_TYPES = ['alarm-list', 'process-mimic', 'vessel-attitude', 'heading', 'map', 'image-mimic', 'table'];
+export const DECORATIVE_WIDGET_TYPES = ['alarm-list', 'process-mimic', 'map', 'image-mimic', 'table'];
 
 export const WIDGET_FAMILIES = {
   gauge: ANALOG_WIDGET_TYPES,
