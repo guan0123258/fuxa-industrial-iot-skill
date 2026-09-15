@@ -7,7 +7,7 @@
 
 > Turns cloud-platform device variables into FUXA elements that are **actually bound to live data**.
 
-[中文](./README.md) · [Docs](./docs) · [Issues](https://github.com/guan0123258/fuxa-industrial-iot-skill/issues)
+[中文](./README-CN.md) · [Docs](./docs) · [Issues](https://github.com/guan0123258/fuxa-industrial-iot-skill/issues)
 
 ---
 
@@ -145,8 +145,9 @@ circular gauges for analog values, 2-hour trends, validate before applying.
 ```text
 fuxa-industrial-iot-skill/
 ├── SKILL.md                  agent workflow specification
-├── README.md                 Chinese (default)
-├── README.en.md              this file
+├── README.md                 GitHub landing index (Chinese)
+├── README-CN.md              Chinese
+├── README-EN.md              this file
 ├── agents/openai.yaml        client metadata
 ├── docs/                     architecture, install, quick start
 ├── references/               widget contract, variable semantics, data sources, security
