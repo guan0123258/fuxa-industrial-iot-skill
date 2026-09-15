@@ -1,0 +1,40 @@
+{
+  "name": "industrial-fuxa-studio-skill",
+  "version": "0.2.0",
+  "description": "Agent skill that designs, generates, validates and safely applies data-bound industrial FUXA SCADA/HMI dashboards.",
+  "license": "MIT",
+  "author": "Hoshi (guan0123258)",
+  "homepage": "https://github.com/guan0123258/fuxa-industrial-iot-skill#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guan0123258/fuxa-industrial-iot-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guan0123258/fuxa-industrial-iot-skill/issues"
+  },
+  "keywords": [
+    "fuxa",
+    "scada",
+    "hmi",
+    "industrial-iot",
+    "agent-skill",
+    "codex",
+    "github-copilot",
+    "modbus"
+  ],
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node tests/run-tests.mjs",
+    "probe": "node scripts/probe-fuxa.mjs",
+    "classify": "node scripts/classify-variables.mjs",
+    "generate": "node scripts/generate-dashboard.mjs",
+    "validate": "node scripts/validate-dashboard.mjs",
+    "apply": "node scripts/apply-to-fuxa.mjs",
+    "install-skill": "node scripts/install-skill.mjs",
+    "fleet": "node scripts/check-fuxa-fleet.mjs"
+  }
+}

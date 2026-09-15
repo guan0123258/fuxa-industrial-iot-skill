@@ -1,0 +1,21 @@
+{
+  "latestRelease": {
+    "provider": "github",
+    "repo": "frangoteam/FUXA",
+    "fallbackVersion": "1.3.4"
+  },
+  "instances": [
+    {
+      "name": "dev-local",
+      "url": "http://127.0.0.1:1881",
+      "apiKeyEnv": "FUXA_DEV_API_KEY",
+      "insecure": false
+    },
+    {
+      "name": "shipyard-prod",
+      "url": "https://fuxa-shipyard.example.com",
+      "apiKeyEnv": "FUXA_SHIPYARD_API_KEY",
+      "insecure": false
+    }
+  ]
+}

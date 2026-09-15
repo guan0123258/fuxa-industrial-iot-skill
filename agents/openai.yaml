@@ -1,0 +1,4 @@
+interface:
+  display_name: "Industrial FUXA Studio"
+  short_description: "Generate and validate industrial FUXA dashboards"
+  default_prompt: "Use $industrial-fuxa-studio to design a safe FUXA dashboard from my industrial-cloud device variables, preview it, validate bindings, and only apply changes after review."

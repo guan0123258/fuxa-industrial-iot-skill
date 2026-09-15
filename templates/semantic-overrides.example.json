@@ -1,0 +1,17 @@
+{
+  "byVariableId": {},
+  "byParameterCode": {
+    "40003": {
+      "semanticType": "pressure",
+      "display": ["pressure-gauge", "trend"],
+      "confidence": 0.98
+    },
+    "40005": {
+      "semanticType": "current",
+      "display": ["gauge", "trend"],
+      "confidence": 0.98
+    }
+  },
+  "byCollectionCode": {},
+  "byName": {}
+}

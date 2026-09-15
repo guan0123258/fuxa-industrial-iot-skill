@@ -1,0 +1,11 @@
+{
+  "id": "ballast-system",
+  "description": "Ballast tanks/pumps/valves/process mimic",
+  "zones": [
+    { "id": "header", "x": 40, "y": 28, "w": 1840, "h": 80 },
+    { "id": "attitude", "x": 40, "y": 130, "w": 420, "h": 240 },
+    { "id": "mimic", "x": 482, "y": 130, "w": 1398, "h": 640 },
+    { "id": "tank-summary", "x": 40, "y": 392, "w": 420, "h": 378 },
+    { "id": "alarms", "x": 40, "y": 792, "w": 1840, "h": 248 }
+  ]
+}

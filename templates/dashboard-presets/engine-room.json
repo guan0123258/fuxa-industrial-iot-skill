@@ -1,0 +1,11 @@
+{
+  "id": "engine-room",
+  "description": "Main/aux engine operational page",
+  "zones": [
+    { "id": "header", "x": 40, "y": 28, "w": 1840, "h": 80 },
+    { "id": "primary", "x": 40, "y": 130, "w": 1840, "h": 300 },
+    { "id": "trend", "x": 40, "y": 452, "w": 1210, "h": 408 },
+    { "id": "status", "x": 1272, "y": 452, "w": 608, "h": 408 },
+    { "id": "footer", "x": 40, "y": 882, "w": 1840, "h": 158 }
+  ]
+}

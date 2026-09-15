@@ -1,0 +1,49 @@
+{
+  "schema": "industrial-fuxa-project-patch/v1",
+  "cmd": "charts",
+  "data": [
+    {
+      "id": "chart-engine-room-overview-widget-key-trends",
+      "name": "机舱总览 · 关键参数趋势",
+      "lines": [
+        {
+          "id": "mainEngine.exhaustTemp",
+          "name": "主机排气温度",
+          "device": "ship01-main-engine",
+          "color": "#4aa8ff"
+        },
+        {
+          "id": "mainEngine.oilPressure",
+          "name": "润滑油压力",
+          "device": "ship01-main-engine",
+          "color": "#36d6c0"
+        },
+        {
+          "id": "mainEngine.rpm",
+          "name": "主机转速",
+          "device": "ship01-main-engine",
+          "color": "#9a86ff"
+        },
+        {
+          "id": "mainEngine.current",
+          "name": "主机电流",
+          "device": "ship01-main-engine",
+          "color": "#ffb34d"
+        },
+        {
+          "id": "mainEngine.runningHours",
+          "name": "累计运行时间",
+          "device": "ship01-main-engine",
+          "color": "#ff7285"
+        },
+        {
+          "id": "mainEngine.unknownMetric",
+          "name": "参数X7",
+          "device": "ship01-main-engine",
+          "color": "#50d890"
+        }
+      ]
+    }
+  ],
+  "reviewRequired": false
+}

@@ -1,0 +1,227 @@
+{
+  "schema": "industrial-fuxa-dashboard-plan/v1",
+  "title": "船舶01 · 主机运行总览",
+  "subtitle": "实时运行状态 / 关键参数 / 报警摘要",
+  "preset": "engine-room",
+  "size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "theme": "marine-dark",
+  "sourceDevice": {
+    "id": "ship01-main-engine",
+    "name": "船舶01-主机",
+    "type": "main-engine",
+    "vesselId": "ship01"
+  },
+  "generatedAt": "2026-09-15T01:17:37.662Z",
+  "widgets": [
+    {
+      "id": "widget-mainEngine.exhaustTemp",
+      "type": "thermometer",
+      "variableId": "mainEngine.exhaustTemp",
+      "title": "主机排气温度",
+      "unit": "°C",
+      "semanticType": "temperature",
+      "confidence": 1,
+      "needsReview": false,
+      "engineeringRange": {
+        "min": 0,
+        "max": 150
+      },
+      "thresholds": {
+        "warningHigh": 95,
+        "alarmHigh": 110
+      },
+      "writable": false,
+      "rect": {
+        "x": 40,
+        "y": 130,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.oilPressure",
+      "type": "pressure-gauge",
+      "variableId": "mainEngine.oilPressure",
+      "title": "润滑油压力",
+      "unit": "bar",
+      "semanticType": "pressure",
+      "confidence": 0.92,
+      "needsReview": false,
+      "engineeringRange": {
+        "min": 0,
+        "max": 10
+      },
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 504.5,
+        "y": 130,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.rpm",
+      "type": "rpm-gauge",
+      "variableId": "mainEngine.rpm",
+      "title": "主机转速",
+      "unit": "rpm",
+      "semanticType": "rpm",
+      "confidence": 1,
+      "needsReview": false,
+      "engineeringRange": {
+        "min": 0,
+        "max": 2400
+      },
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 969,
+        "y": 130,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.current",
+      "type": "gauge",
+      "variableId": "mainEngine.current",
+      "title": "主机电流",
+      "unit": "A",
+      "semanticType": "current",
+      "confidence": 0.92,
+      "needsReview": false,
+      "engineeringRange": {
+        "min": 0,
+        "max": 120
+      },
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 1433.5,
+        "y": 130,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.running",
+      "type": "status",
+      "variableId": "mainEngine.running",
+      "title": "主机运行状态",
+      "unit": "",
+      "semanticType": "status",
+      "confidence": 1,
+      "needsReview": false,
+      "engineeringRange": null,
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 40,
+        "y": 289,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.runningHours",
+      "type": "kpi",
+      "variableId": "mainEngine.runningHours",
+      "title": "累计运行时间",
+      "unit": "h",
+      "semanticType": "runtime",
+      "confidence": 1,
+      "needsReview": false,
+      "engineeringRange": null,
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 504.5,
+        "y": 289,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-mainEngine.unknownMetric",
+      "type": "kpi",
+      "variableId": "mainEngine.unknownMetric",
+      "title": "参数X7",
+      "unit": "",
+      "semanticType": "generic-number",
+      "confidence": 0.35,
+      "needsReview": true,
+      "engineeringRange": null,
+      "thresholds": null,
+      "writable": false,
+      "rect": {
+        "x": 969,
+        "y": 289,
+        "w": 446.5,
+        "h": 141
+      }
+    },
+    {
+      "id": "widget-key-trends",
+      "type": "multi-trend",
+      "title": "关键参数趋势",
+      "variableIds": [
+        "mainEngine.exhaustTemp",
+        "mainEngine.oilPressure",
+        "mainEngine.rpm",
+        "mainEngine.current",
+        "mainEngine.runningHours",
+        "mainEngine.unknownMetric"
+      ],
+      "history": {
+        "defaultWindow": "24h",
+        "aggregation": "avg",
+        "source": "industrial-cloud-api"
+      },
+      "rect": {
+        "id": "trend",
+        "x": 40,
+        "y": 452,
+        "w": 1210,
+        "h": 408
+      }
+    },
+    {
+      "id": "widget-system-status",
+      "type": "equipment-matrix",
+      "title": "设备 / 系统状态",
+      "variableIds": [
+        "mainEngine.running"
+      ],
+      "rect": {
+        "id": "status",
+        "x": 1272,
+        "y": 452,
+        "w": 608,
+        "h": 408
+      }
+    },
+    {
+      "id": "widget-alarms",
+      "type": "alarm-list",
+      "title": "报警与数据质量",
+      "variableIds": [],
+      "rect": {
+        "id": "footer",
+        "x": 40,
+        "y": 882,
+        "w": 1840,
+        "h": 158
+      }
+    }
+  ],
+  "review": {
+    "lowConfidenceVariableIds": [
+      "mainEngine.unknownMetric"
+    ],
+    "writableVariableIds": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "船舶01 · 主机运行总览",
+  "subtitle": "实时运行状态 / 关键参数 / 报警摘要",
+  "preset": "engine-room",
+  "width": 1920,
+  "height": 1080,
+  "theme": "marine-dark",
+  "showClock": true,
+  "showDataFreshness": true,
+  "groups": [
+    { "id": "main", "title": "主机关键参数", "matchPrefix": "mainEngine." }
+  ],
+  "history": {
+    "defaultWindow": "24h",
+    "aggregation": "avg",
+    "source": "industrial-cloud-api"
+  }
+}

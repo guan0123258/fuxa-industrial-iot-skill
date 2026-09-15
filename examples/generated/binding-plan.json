@@ -1,0 +1,62 @@
+{
+  "schema": "industrial-fuxa-binding-plan/v1",
+  "source": "industrial-cloud-api",
+  "bindings": [
+    {
+      "variableId": "mainEngine.exhaustTemp",
+      "sourcePath": "values.exhaustTemp",
+      "fuxaTagId": "mainEngine.exhaustTemp",
+      "writable": false,
+      "semanticType": "temperature",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.oilPressure",
+      "sourcePath": "values.oilPressure",
+      "fuxaTagId": "mainEngine.oilPressure",
+      "writable": false,
+      "semanticType": "pressure",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.rpm",
+      "sourcePath": "values.rpm",
+      "fuxaTagId": "mainEngine.rpm",
+      "writable": false,
+      "semanticType": "rpm",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.current",
+      "sourcePath": "values.current",
+      "fuxaTagId": "mainEngine.current",
+      "writable": false,
+      "semanticType": "current",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.running",
+      "sourcePath": "values.running",
+      "fuxaTagId": "mainEngine.running",
+      "writable": false,
+      "semanticType": "status",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.runningHours",
+      "sourcePath": "values.runningHours",
+      "fuxaTagId": "mainEngine.runningHours",
+      "writable": false,
+      "semanticType": "runtime",
+      "needsReview": false
+    },
+    {
+      "variableId": "mainEngine.unknownMetric",
+      "sourcePath": "values.x7",
+      "fuxaTagId": "mainEngine.unknownMetric",
+      "writable": false,
+      "semanticType": "generic-number",
+      "needsReview": true
+    }
+  ]
+}

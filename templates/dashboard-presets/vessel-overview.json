@@ -1,0 +1,11 @@
+{
+  "id": "vessel-overview",
+  "description": "Vessel operational overview",
+  "zones": [
+    { "id": "header", "x": 40, "y": 28, "w": 1840, "h": 80 },
+    { "id": "kpis", "x": 40, "y": 130, "w": 1840, "h": 190 },
+    { "id": "systems", "x": 40, "y": 342, "w": 700, "h": 430 },
+    { "id": "trend", "x": 762, "y": 342, "w": 1118, "h": 430 },
+    { "id": "alarms", "x": 40, "y": 794, "w": 1840, "h": 246 }
+  ]
+}

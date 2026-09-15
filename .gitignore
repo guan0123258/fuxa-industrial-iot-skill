@@ -1,0 +1,23 @@
+# Dependencies (the skill itself is dependency-free)
+node_modules/
+
+# Local / generated output
+out/
+generated-dashboard/
+backups/
+fuxa-capabilities.json
+fuxa-project-inspection.json
+project-inspection.json
+
+# Local configuration that may carry secrets
+industrial-cloud.config.json
+.env
+.env.*
+*.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

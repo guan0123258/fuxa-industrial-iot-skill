@@ -1,0 +1,10 @@
+{
+  "id": "alarm-center",
+  "description": "Alarm operations center",
+  "zones": [
+    { "id": "header", "x": 40, "y": 28, "w": 1840, "h": 80 },
+    { "id": "severity", "x": 40, "y": 130, "w": 1840, "h": 180 },
+    { "id": "active", "x": 40, "y": 332, "w": 1230, "h": 708 },
+    { "id": "summary", "x": 1292, "y": 332, "w": 588, "h": 708 }
+  ]
+}
