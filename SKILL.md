@@ -1,9 +1,9 @@
 ---
-name: industrial-fuxa-studio
+name: fuxa-industrial-iot-skill
 description: Design, generate, validate, inspect, and safely apply industrial SCADA/HMI dashboards to FUXA. Optimized for an industrial-cloud architecture where device data remains in an upstream IoT platform and FUXA acts as the visualization layer. Supports version/capability probing, explicit-first variable semantics, shipyard/marine presets, safe dry-run project patches, and API-to-FUXA tag bridging.
 ---
 
-# Industrial FUXA Studio
+# FUXA Industrial IoT Skill
 
 Use this skill when the user asks to create or modify FUXA dashboards, SCADA/HMI views, industrial BI-like pages, equipment mimics, trends, gauges, status panels, alarm pages, or a visualization integration between an industrial cloud and FUXA.
 

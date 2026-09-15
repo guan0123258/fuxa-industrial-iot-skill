@@ -14,7 +14,7 @@
     "type": "main-engine",
     "vesselId": "ship01"
   },
-  "generatedAt": "2026-09-15T01:17:37.662Z",
+  "generatedAt": "2026-09-15T01:33:35.954Z",
   "widgets": [
     {
       "id": "widget-mainEngine.exhaustTemp",

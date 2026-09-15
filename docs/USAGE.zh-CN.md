@@ -1,6 +1,6 @@
 # 使用指南（中文）
 
-`industrial-fuxa-studio` 有三种用法，互不冲突，可以同时装：
+`fuxa-industrial-iot-skill` 有三种用法，互不冲突，可以同时装：
 
 | 用法 | 适合谁 | 需要 Node 吗 |
 |---|---|---|
@@ -18,7 +18,7 @@
 不用 AI，手工跑四个脚本即可。
 
 ```bash
-cd industrial-fuxa-studio-skill
+cd fuxa-industrial-iot-skill
 npm test                      # 11 项自检，先确认环境没问题
 
 # 1) 变量语义分类（可跳过，生成器内部也会分类）
@@ -63,21 +63,21 @@ node scripts/inspect-fuxa-project.mjs --url http://8.153.154.62:1881 --out inspe
 装到**用户级**（你自己所有工程都能用）：
 
 ```powershell
-cd d:\船舶PLC\industrial-fuxa-studio-skill
+cd d:\船舶PLC\fuxa-industrial-iot-skill
 node scripts\install-skill.mjs --target vscode --scope user
-# 实际复制到 %APPDATA%\Code\User\prompts\skills\industrial-fuxa-studio\
+# 实际复制到 %APPDATA%\Code\User\prompts\skills\fuxa-industrial-iot-skill\
 ```
 
 装到**工程级**（跟着仓库走，同事 clone 下来就有）：
 
 ```powershell
 node scripts\install-skill.mjs --target vscode --scope project --project d:\船舶PLC\industrial-cloud-ui
-# 复制到 <仓库>\.github\skills\industrial-fuxa-studio\
+# 复制到 <仓库>\.github\skills\fuxa-industrial-iot-skill\
 ```
 
 装完 **重载 VS Code 窗口**（`Developer: Reload Window`）。然后在 Copilot Chat 里直接说需求，例如：
 
-> 用 industrial-fuxa-studio 把主推进系统做成组态页面，5 个模拟量用圆环仪表，绑定当前 FUXA 工程的 live 设备标签，先生成再校验，我确认后再 apply。
+> 用 fuxa-industrial-iot-skill 把主推进系统做成组态页面，5 个模拟量用圆环仪表，绑定当前 FUXA 工程的 live 设备标签，先生成再校验，我确认后再 apply。
 
 Copilot 会按 `SKILL.md` 的工作流走：探测 → 分类 → 生成 → 校验 → 备份 → 应用 → 回读。
 
@@ -91,16 +91,16 @@ Codex 走 Agent Skills 的目录约定，装到下面任一位置即可被自动
 
 ```text
 # 用户级（你自己所有工程）
-~/.agents/skills/industrial-fuxa-studio/
+~/.agents/skills/fuxa-industrial-iot-skill/
 
 # 工程级（推荐给团队，跟仓库走）
-<repo>/.agents/skills/industrial-fuxa-studio/
+<repo>/.agents/skills/fuxa-industrial-iot-skill/
 ```
 
 用脚本装（会自动带上全套 `scripts/`、`references/`、`templates/`，并在工程根目录追加 `AGENTS.md` 说明）：
 
 ```powershell
-cd d:\船舶PLC\industrial-fuxa-studio-skill
+cd d:\船舶PLC\fuxa-industrial-iot-skill
 
 # 我自己全局用
 node scripts\install-skill.mjs --target codex --scope user
@@ -113,19 +113,19 @@ node scripts\install-skill.mjs --target codex --scope project --project d:\船�
 
 | 路径 | 作用 |
 |---|---|
-| `.agents/skills/industrial-fuxa-studio/` | 完整 skill 包 |
+| `.agents/skills/fuxa-industrial-iot-skill/` | 完整 skill 包 |
 | `AGENTS.md`（工程根） | 告诉 Codex：遇到 FUXA/组态任务就读 `SKILL.md` 并按流程走 |
 
 `--scope project` 默认就会写 `AGENTS.md`；写用户级时想额外在某个仓库写，可以加 `--agents-md --project <repo>`。
 
 装完重启 / 刷新 Codex 的 Skills 列表，然后用 skill 名引用：
 
-> `Use $industrial-fuxa-studio to add a circular-gauge main propulsion view to my FUXA project and validate it before applying.`
+> `Use $fuxa-industrial-iot-skill to add a circular-gauge main propulsion view to my FUXA project and validate it before applying.`
 
 `agents/openai.yaml` 里已经给了一个默认提示词，Skill/Plugin 界面导入时会带上：
 
 ```
-Use $industrial-fuxa-studio to design a safe FUXA dashboard from my
+Use $fuxa-industrial-iot-skill to design a safe FUXA dashboard from my
 industrial-cloud device variables, preview it, validate bindings, and only
 apply changes after review.
 ```
@@ -140,7 +140,7 @@ ChatGPT 的 Skills/Plugins 是否可见，取决于账号和工作区策略。�
 
 ### 方式 1：直接发文件夹（最简单）
 
-把整个 `industrial-fuxa-studio-skill` 目录拷给同事（压缩包即可，注意别漏掉 `scripts/lib/`、`references/`、`templates/`——只给 `SKILL.md` 是跑不起来的）。同事在自己机器上：
+把整个 `fuxa-industrial-iot-skill` 目录拷给同事（压缩包即可，注意别漏掉 `scripts/lib/`、`references/`、`templates/`——只给 `SKILL.md` 是跑不起来的）。同事在自己机器上：
 
 ```powershell
 cd <解压出来的目录>
@@ -158,8 +158,8 @@ node scripts\install-skill.mjs --target codex  --scope user
 
 ```text
 industrial-cloud-ui/
-├─ .agents/skills/industrial-fuxa-studio/    ← Codex
-├─ .github/skills/industrial-fuxa-studio/    ← VS Code Copilot
+├─ .agents/skills/fuxa-industrial-iot-skill/    ← Codex
+├─ .github/skills/fuxa-industrial-iot-skill/    ← VS Code Copilot
 └─ AGENTS.md
 ```
 
@@ -175,8 +175,8 @@ node scripts\install-skill.mjs --target vscode --scope project --project <repo>
 `package.json` 已就绪（`"type": "module"`、`engines.node >= 18`、无第三方依赖）。放进私有 registry 后同事：
 
 ```bash
-npm i -D @your-scope/industrial-fuxa-studio-skill
-node node_modules/@your-scope/industrial-fuxa-studio-skill/scripts/install-skill.mjs --target vscode --scope project --project .
+npm i -D @your-scope/fuxa-industrial-iot-skill
+node node_modules/@your-scope/fuxa-industrial-iot-skill/scripts/install-skill.mjs --target vscode --scope project --project .
 ```
 
 ---

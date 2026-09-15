@@ -41,10 +41,10 @@ Use the Skills management interface in your Codex surface when available and imp
 
 ```text
 # project-local
-<repo>/.agents/skills/industrial-fuxa-studio/
+<repo>/.agents/skills/fuxa-industrial-iot-skill/
 
 # user/global
-~/.agents/skills/industrial-fuxa-studio/
+~/.agents/skills/fuxa-industrial-iot-skill/
 ```
 
 For project-local installs, add an `AGENTS.md` at the repository root pointing
@@ -56,11 +56,11 @@ Restart or force-refresh skills after copying. Product UI and distribution mecha
 
 ```text
 # project-local
-<repo>/.github/skills/industrial-fuxa-studio/
+<repo>/.github/skills/fuxa-industrial-iot-skill/
 
 # user/global
-%APPDATA%\Code\User\prompts\skills\industrial-fuxa-studio\   (Windows)
-~/.config/Code/User/prompts/skills/industrial-fuxa-studio/   (Linux/macOS)
+%APPDATA%\Code\User\prompts\skills\fuxa-industrial-iot-skill\   (Windows)
+~/.config/Code/User/prompts/skills/fuxa-industrial-iot-skill/   (Linux/macOS)
 ```
 
 Reload the VS Code window afterwards.
@@ -75,7 +75,7 @@ client installs and handing the skill to a colleague.
 ## 3. Verify the package
 
 ```bash
-cd industrial-fuxa-studio-skill
+cd fuxa-industrial-iot-skill
 node --version
 npm test
 ```

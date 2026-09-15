@@ -24,11 +24,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs, boolArg } from './lib/args.mjs';
 
-const SKILL_NAME = 'industrial-fuxa-studio';
+const SKILL_NAME = 'fuxa-industrial-iot-skill';
 const PACKAGE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SKIP = new Set(['node_modules', '.git', '.DS_Store', 'backups']);
 const AGENTS_MD_SECTION = `
-## FUXA dashboards (industrial-fuxa-studio skill)
+## FUXA dashboards (${SKILL_NAME})
 
 This repository ships the \`${SKILL_NAME}\` agent skill under \`.agents/skills/${SKILL_NAME}\`.
 
@@ -79,7 +79,7 @@ async function upsertAgentsMd(projectDir) {
   } catch {
     current = '';
   }
-  const marker = `## FUXA dashboards (${SKILL_NAME} skill)`;
+  const marker = `## FUXA dashboards (${SKILL_NAME})`;
   if (current.includes(marker)) {
     console.log(`AGENTS.md already references the skill: ${file}`);
     return file;

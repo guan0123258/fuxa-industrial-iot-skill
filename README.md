@@ -1,4 +1,4 @@
-# Industrial FUXA Studio Skill
+# FUXA Industrial IoT Skill
 
 A clean-room, extended Agent Skill for turning FUXA into an **AI-configurable industrial SCADA/HMI visualization layer** behind an existing industrial cloud.
 
@@ -44,7 +44,7 @@ The public `HugeShao/Fuxa-automation-skill` is a useful proof of concept, but it
 ## Included
 
 ```text
-industrial-fuxa-studio-skill/
+fuxa-industrial-iot-skill/
 ├── SKILL.md
 ├── README.md
 ├── package.json
@@ -84,7 +84,7 @@ industrial-fuxa-studio-skill/
 ## Fast start
 
 ```bash
-cd industrial-fuxa-studio-skill
+cd fuxa-industrial-iot-skill
 npm test
 
 # 1) Classify a variable manifest

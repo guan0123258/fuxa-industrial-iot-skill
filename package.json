@@ -1,5 +1,5 @@
 {
-  "name": "industrial-fuxa-studio-skill",
+  "name": "fuxa-industrial-iot-skill",
   "version": "0.2.0",
   "description": "Agent skill that designs, generates, validates and safely applies data-bound industrial FUXA SCADA/HMI dashboards.",
   "license": "MIT",

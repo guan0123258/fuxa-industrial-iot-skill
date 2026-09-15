@@ -14,7 +14,7 @@ if (cfg.latestRelease?.provider === 'github' && !args['offline']) {
   try {
     const repo = cfg.latestRelease.repo || 'frangoteam/FUXA';
     const r = await requestJson(`https://api.github.com/repos/${repo}/releases/latest`, {
-      headers: { 'User-Agent': 'industrial-fuxa-studio-skill', Accept: 'application/vnd.github+json' },
+      headers: { 'User-Agent': 'fuxa-industrial-iot-skill', Accept: 'application/vnd.github+json' },
       timeoutMs: 7000
     });
     const candidate = r.data?.tag_name || r.data?.name;

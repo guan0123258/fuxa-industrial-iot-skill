@@ -1,4 +1,4 @@
-# Industrial FUXA Studio Skill（中文版）
+# FUXA Industrial IoT Skill（中文版）
 
 这是一个针对“**已有工业物联网平台 + 客户工业云 + FUXA 可视化层**”重新设计的 Agent Skill。它不是让 FUXA 替代卡奥斯平台，也不是让 FUXA 重新采 PLC；它把 FUXA 定位为客户工业云后面的 SCADA/HMI/工业可视化引擎。
 
@@ -58,7 +58,7 @@ FUXA 可视化页面
 ## 最快体验
 
 ```bash
-cd industrial-fuxa-studio-skill
+cd fuxa-industrial-iot-skill
 npm test
 
 # 生成计划 + 预览 + 真正可用的 FUXA 视图补丁
@@ -120,19 +120,19 @@ node scripts/check-fuxa-fleet.mjs \
 项目级安装：
 
 ```text
-<你的项目>/.agents/skills/industrial-fuxa-studio/
+<你的项目>/.agents/skills/fuxa-industrial-iot-skill/
 ```
 
 用户级安装：
 
 ```text
-~/.agents/skills/industrial-fuxa-studio/
+~/.agents/skills/fuxa-industrial-iot-skill/
 ```
 
 把整个目录复制进去，重启/刷新 Codex Skill 列表后，可以明确调用：
 
 ```text
-$industrial-fuxa-studio
+$fuxa-industrial-iot-skill
 ```
 
 如果你的 Codex 界面支持 Skill/Plugin 安装器，优先用当前界面的安装功能，因为 OpenAI 的 Skill/Plugin 分发方式仍在演进。
